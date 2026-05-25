@@ -1,0 +1,39 @@
+# Force LF for shell scripts, Makefiles, and configs
+*.sh text eol=lf
+*.bash text eol=lf
+Makefile text eol=lf
+*.mk text eol=lf
+
+# Source code
+*.dart text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.hpp text eol=lf
+*.rs text eol=lf
+*.swift text eol=lf
+*.kt text eol=lf
+
+# Config / data
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.xml text eol=lf
+*.plist text eol=lf
+*.entitlements text eol=lf
+*.xcconfig text eol=lf
+*.pbxproj text eol=lf
+
+# Docs
+*.md text eol=lf
+
+# Batch files stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Windows project files stay CRLF
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.vcxproj.filters text eol=crlf
