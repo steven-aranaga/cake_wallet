@@ -1,0 +1,15 @@
+[submodule "scripts/bitbox_flutter"]
+	path = scripts/bitbox_flutter
+	url = https://github.com/konstantinullrich/bitbox_flutter
+[submodule "scripts/monero_c"]
+	path = scripts/monero_c
+	url = https://github.com/mrcyjanek/monero_c
+[submodule "scripts/reown_flutter"]
+	path = scripts/reown_flutter
+	url = https://github.com/cake-tech/reown_flutter
+[submodule "scripts/torch_dart"]
+	path = scripts/torch_dart
+	url = https://github.com/mrcyjanek/torch_dart
+[submodule "scripts/zcash_lib"]
+	path = scripts/zcash_lib
+	url = https://github.com/MrCyjaneK/zwallet.git

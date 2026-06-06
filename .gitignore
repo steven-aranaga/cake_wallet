@@ -187,8 +187,7 @@ macos/AppIcon.icon/*
 
 integration_test/playground.dart
 
-# Monero.dart (Monero_C)
-scripts/monero_c
+# Monero.dart (Monero_C) - now managed as git submodule
 # iOS generated framework bin
 ios/MoneroWallet.framework/MoneroWallet
 ios/WowneroWallet.framework/WowneroWallet
@@ -219,9 +218,5 @@ flatpak-build/
 **/linux/flutter/generated_plugin_registrant.h
 **/linux/flutter/generated_plugins.cmake
 
-scripts/torch_dart/
 fiat-check-output.txt
-scripts/zcash_lib
 scripts/android/yttrium
-scripts/bitbox_flutter
-scripts/reown_flutter

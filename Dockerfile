@@ -1,4 +1,4 @@
-# docker buildx build --push --pull --platform linux/amd64,linux/arm64 . -f Dockerfile -t ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.0-ndkr28-go1.24.1-ruststablenightly
+# docker buildx build --push --pull --platform linux/amd64,linux/arm64 . -f Dockerfile -t ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly
 
 # Heavily inspired by cirrusci images
 # https://github.com/cirruslabs/docker-images-android/blob/master/sdk/tools/Dockerfile
@@ -10,12 +10,14 @@ FROM docker.io/debian:13
 
 LABEL org.opencontainers.image.source=https://github.com/cake-tech/cake_wallet
 
-# Set necessary environment variables
-# Set Go version to latest known-working version
-ENV GOLANG_VERSION=1.24.1
+# Versions — declare as ARGs so they can be overridden at build time without
+# editing this file, e.g.: docker build --build-arg FLUTTER_VERSION=3.32.9 ...
+# Flutter is intentionally declared late (just before its install step) so that
+# changing FLUTTER_VERSION only busts the last few layers, not the whole image.
+ARG GOLANG_VERSION=1.24.1
+ENV GOLANG_VERSION=$GOLANG_VERSION
 
-# Pin Flutter version to latest known-working version
-ENV FLUTTER_VERSION=3.32.0
+ARG ANDROID_NDK_VERSION=28.2.13676358
 
 # Pin Android Studio, platform, and build tools versions to latest known-working version
 # Comes from https://developer.android.com/studio/#command-tools
@@ -148,8 +150,8 @@ RUN ARCH=$(uname -m) && \
     "cmake;3.22.1"
 
 # Install extra NDK dependency for sp_scanner
-ENV ANDROID_NDK_VERSION=28.2.13676358
-
+# ANDROID_NDK_VERSION declared as ARG at the top; promote to ENV here for RUN steps
+ENV ANDROID_NDK_VERSION=$ANDROID_NDK_VERSION
 ENV ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/$ANDROID_NDK_VERSION
 ENV ANDROID_NDK=$ANDROID_NDK_HOME
 
@@ -177,16 +179,24 @@ RUN (addgroup kvm || true) && \
 ENV PATH=${HOME}/.cargo/bin:${PATH}
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y && \
     cargo install cargo-ndk && \
-    for toolchain in stable nightly; \
-    do \
-    for target in aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu aarch64-unknown-linux-gnu; \
-    do \
-    rustup target add --toolchain $toolchain $target; \
-    done \
+    for toolchain in stable nightly; do \
+        for target in \
+            aarch64-linux-android \
+            armv7-linux-androideabi \
+            i686-linux-android \
+            x86_64-linux-android \
+            x86_64-unknown-linux-gnu \
+            aarch64-unknown-linux-gnu; \
+        do \
+            rustup target add --toolchain $toolchain $target; \
+        done \
     done
 
-# Download and install Flutter
-ENV HOME=${HOME}
+# Flutter — declared here (not at the top) so that changing FLUTTER_VERSION only
+# busts these final layers and not the entire image. To override at build time:
+#   docker build --build-arg FLUTTER_VERSION=3.32.9 ...
+ARG FLUTTER_VERSION=3.32.8
+ENV FLUTTER_VERSION=$FLUTTER_VERSION
 ENV FLUTTER_HOME=${HOME}/sdks/flutter/${FLUTTER_VERSION}
 ENV FLUTTER_ROOT=$FLUTTER_HOME
 ENV PATH=${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin

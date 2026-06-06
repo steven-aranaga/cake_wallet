@@ -3,11 +3,11 @@ set -x -e
 cd "$(dirname "$0")"
 
 # IMPORTANT: Make sure to update action 'Build Reown` in
-# - .github/workflows/pr_test_build_android.yml 
+# - .github/workflows/pr_test_build_android.yml
 # - .github/workflows/pr_test_build_linux.yml
 # https://github.com/cake-tech/reown_flutter/releases/download/v0.0.4/reown_flutter-v0.0.4.tar.gz
 
-HASH=8a6d79ef7a268c493eeba45feef9991eea119bbd
+HASH=2c3b52527e5caa603a13b4e75069e3ec98f93e8f
 
 if [[ ! -d "reown_flutter/.git" ]];
 then

@@ -9,7 +9,7 @@ jobs:
   PR_test_build:
     runs-on: [Linux, amd64, forlinux]
     container:
-      image: ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.0-ndkr28-go1.24.1-ruststablenightly
+      image: ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly
       env:
         STORE_PASS: test@cake_wallet
         KEY_PASS: test@cake_wallet
@@ -74,7 +74,7 @@ jobs:
         run: |
           set -x -e
           pushd scripts
-            wget https://github.com/MrCyjaneK/torch_dart/releases/download/v1.0.17/torch_dart-v1.0.17.tar.gz -O torch_dart.tar.gz
+            wget https://github.com/MrCyjaneK/torch_dart/releases/download/v1.0.18/torch_dart-v1.0.18.tar.gz -O torch_dart.tar.gz
             mkdir torch_dart
             pushd torch_dart
               tar -xzf ../torch_dart.tar.gz
@@ -118,7 +118,7 @@ jobs:
           pushd scripts/monero_c/release
             mkdir -p $(git describe --tags)
             pushd $(git describe --tags)
-              wget https://github.com/MrCyjaneK/monero_c/releases/download/v0.18.4.6-RC1/release-bundle.zip
+              wget https://github.com/MrCyjaneK/monero_c/releases/download/v0.18.4.6-RC2/release-bundle.zip
               unzip release-bundle.zip
               rm release-bundle.zip
             popd
