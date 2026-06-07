@@ -25,6 +25,46 @@ manually; the build scripts manage them.
 
 ## Building Cake Wallet or Monero.com
 
+### How it works
+
+The Docker container uses a **volume mount** (`-v$(pwd):$(pwd)`) to access your local repository. This means:
+
+- The cloned repository on your host machine is mounted **directly into the container** at the same path
+- All build artifacts created inside the container are automatically written to your local machine
+- No manual file transfer is needed—the container shares the working directory with your host
+
+### Build steps
+
+#### On Windows
+
+On Windows, you need to use the appropriate path variable for your shell. We recommend **WSL2** (most reliable):
+
+**WSL2 (recommended):**
+```bash
+git clone --branch main https://github.com/cake-tech/cake_wallet.git
+cd cake_wallet
+
+docker run --privileged -v$(pwd):$(pwd) -w $(pwd) -i --rm \
+```
+
+Alternatively, use **PowerShell** with `${PWD}` or **Command Prompt** with `%cd%`:
+
+```powershell
+# PowerShell
+docker run --privileged -v${PWD}:${PWD} -w ${PWD} -i --rm `
+  ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly `
+  bash -x << 'EOF'
+```
+
+```cmd
+REM Command Prompt
+docker run --privileged -v%cd%:%cd% -w %cd% -i --rm ^
+  ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly ^
+  bash -x << EOF
+```
+
+#### On macOS/Linux
+
 ```bash
 git clone --branch main https://github.com/cake-tech/cake_wallet.git
 # NOTE: Replace `main` with the latest release tag:
@@ -34,7 +74,7 @@ cd cake_wallet
 # To build the Docker image yourself instead of pulling it, uncomment the next line:
 # docker build -t ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly .
 
-docker run --privileged -v$(pwd):$(pwd) -w $(pwd) -i --rm \
+docker run --privileged -v$(pwd):$(pwd) -w $(pwd) -i --rm
   ghcr.io/cake-tech/cake_wallet:debian13-flutter3.32.8-ndkr28-go1.24.1-ruststablenightly \
   bash -x << 'EOF'
 set -x -e
@@ -88,6 +128,16 @@ Building Linux application...
 ```
 
 The binary and its shared libraries are in `build/linux/x64/release/bundle/`.
+
+### Accessing build artifacts
+
+After the Docker container exits, all build outputs are available in your local cloned repository:
+
+- **Linux binary:** `build/linux/x64/release/bundle/cake_wallet`
+- **Shared libraries:** `build/linux/x64/release/bundle/lib/`
+- **Flatpak bundle:** `build/linux/current/cake_wallet.flatpak` (if you built it)
+
+You can now copy, run, or distribute these files from your local machine.
 
 ### Installing the Flatpak
 
