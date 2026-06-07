@@ -220,3 +220,8 @@ flatpak-build/
 
 fiat-check-output.txt
 scripts/android/yttrium
+scripts/bitbox_flutter/
+scripts/monero_c/
+scripts/reown_flutter/
+scripts/torch_dart/
+scripts/zcash_lib/
