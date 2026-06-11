@@ -103,7 +103,7 @@ class _TokenSelectionContentState extends State<_TokenSelectionContent> {
 
   WalletType _resolveGenericETHDetectionResultToSpecificChain(WalletType network, bool hasURIScheme) {
     if(hasURIScheme || network != WalletType.ethereum) return network;
-    
+
     final current = widget.paymentViewModel.currentWalletType;
     if (isEVMCompatibleChain(current)) return current;
     return network;

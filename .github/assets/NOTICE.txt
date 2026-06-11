@@ -7,7 +7,7 @@ Originally drewn by Larry Ewing (http://www.isc.tamu.edu/~lewing/)
 (with the GIMP) the Linux Logo has been vectorized by me (Simon Budig,
 http://www.home.unix-ag.org/simon/).
 
-This happened quite some time ago with Corel Draw 4. But luckily 
+This happened quite some time ago with Corel Draw 4. But luckily
 meanwhile there are tools available to handle vector graphics with
 Linux. Bernhard Herzog (bernhard@users.sourceforge.net) deserves kudos
 for creating Sketch (http://sketch.sourceforge.net), a powerful free
@@ -33,7 +33,7 @@ has to include this README/Copyright notice.
 The use of these drawings is free. However I am happy about a sample of
 your mug/t-shirt/whatever with this penguin on it...
 
-Have fun 
+Have fun
     Simon Budig
 
 

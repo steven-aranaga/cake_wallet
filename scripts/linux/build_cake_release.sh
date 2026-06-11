@@ -60,7 +60,7 @@ build_for_arch() {
     local arch=$1
     local flutter_arch=$2
     echo "Building $APP_TYPE for Linux ($arch)"
-    
+
     docker run --privileged -v$(pwd):$(pwd) -w $(pwd) -i --rm --platform linux/$arch $DOCKER_IMAGE bash -x << EOF
 set -x -e
 pushd scripts

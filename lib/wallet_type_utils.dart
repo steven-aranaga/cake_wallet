@@ -17,8 +17,8 @@ bool get hasMonero {
 
 String get approximatedAppName {
     if (isMoneroOnly) {
-        return 'Monero.com';   
+        return 'Monero.com';
     }
-     
+
     return 'Cake Wallet';
 }

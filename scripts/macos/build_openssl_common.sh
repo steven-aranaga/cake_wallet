@@ -29,12 +29,12 @@ build_openssl_init_common() {
 
 build_openssl_init_arm64() {
 	DIR=$OPEN_SSL_ARM_DIR_PATH
-	build_openssl_init_common ${DIR}	
+	build_openssl_init_common ${DIR}
 }
 
 build_openssl_init_x86_64() {
 	DIR=$OPEN_SSL_X86_64_DIR_PATH
-	build_openssl_init_common ${DIR}	
+	build_openssl_init_common ${DIR}
 }
 
 build_openssl_compile_common() {

@@ -41,7 +41,7 @@ class ZanoRestoreWalletFromKeysCredentials extends WalletCredentials {
   final String spendKey;
 }
 
-class ZanoWalletService extends WalletService<ZanoNewWalletCredentials, 
+class ZanoWalletService extends WalletService<ZanoNewWalletCredentials,
     ZanoRestoreWalletFromSeedCredentials, ZanoRestoreWalletFromKeysCredentials, ZanoNewWalletCredentials> {
   ZanoWalletService();
 

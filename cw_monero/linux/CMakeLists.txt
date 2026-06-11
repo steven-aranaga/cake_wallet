@@ -121,7 +121,7 @@ set_target_properties(boost_wserialization PROPERTIES IMPORTED_LOCATION
 add_library(wallet STATIC IMPORTED)
 set_target_properties(wallet PROPERTIES IMPORTED_LOCATION
         ${EXTERNAL_LIBS_DIR}/lib/monero/libwallet.a)
-        
+
 add_library(wallet_api STATIC IMPORTED)
 set_target_properties(wallet_api PROPERTIES IMPORTED_LOCATION
         ${EXTERNAL_LIBS_DIR}/lib/monero/libwallet_api.a)
@@ -136,7 +136,7 @@ set_target_properties(cryptonote_basic PROPERTIES IMPORTED_LOCATION
 
 add_library(cryptonote_format_utils_basic STATIC IMPORTED)
 set_target_properties(cryptonote_format_utils_basic PROPERTIES IMPORTED_LOCATION
-        ${EXTERNAL_LIBS_DIR}/lib/monero/libcryptonote_format_utils_basic.a)        
+        ${EXTERNAL_LIBS_DIR}/lib/monero/libcryptonote_format_utils_basic.a)
 
 add_library(mnemonics STATIC IMPORTED)
 set_target_properties(mnemonics PROPERTIES IMPORTED_LOCATION
@@ -201,7 +201,7 @@ set_target_properties(version PROPERTIES IMPORTED_LOCATION
 add_library(net STATIC IMPORTED)
 set_target_properties(net PROPERTIES IMPORTED_LOCATION
         ${EXTERNAL_LIBS_DIR}/lib/monero/libnet.a)
-        
+
 add_library(hardforks STATIC IMPORTED)
 set_target_properties(hardforks PROPERTIES IMPORTED_LOCATION
         ${EXTERNAL_LIBS_DIR}/lib/monero/libhardforks.a)
@@ -225,7 +225,7 @@ set_target_properties(unbound PROPERTIES IMPORTED_LOCATION
 include_directories( ${EXTERNAL_LIBS_DIR}/include )
 
 target_link_libraries(  cw_monero
-                       
+
                         wallet_api
                         wallet
                         cryptonote_core
@@ -265,6 +265,6 @@ target_link_libraries(  cw_monero
 
                         ssl
                         crypto
-                        
+
                         sodium
                         )

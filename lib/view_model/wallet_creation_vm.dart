@@ -101,7 +101,7 @@ abstract class WalletCreationVMBase with Store {
 
       final credentials = getCredentials(options);
 
-      final di = ((credentials.derivationInfo?.derivationPath??"") == "") 
+      final di = ((credentials.derivationInfo?.derivationPath??"") == "")
         ? getDefaultCreateDerivation()
         : credentials.derivationInfo;
 

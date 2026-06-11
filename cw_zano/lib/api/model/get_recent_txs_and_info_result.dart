@@ -6,7 +6,7 @@ class GetRecentTxsAndInfoResult {
   final int totalTransfers;
 
   GetRecentTxsAndInfoResult({required this.transfers, required this.lastItemIndex, required this.totalTransfers});
-  
+
   GetRecentTxsAndInfoResult.empty(): this.transfers = [], this.lastItemIndex = 0, this.totalTransfers = 0;
 
 }

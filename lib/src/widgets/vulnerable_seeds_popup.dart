@@ -39,7 +39,7 @@ class VulnerableSeedsPopup extends StatelessWidget {
                               decoration: TextDecoration.none,
                               fontSize: 24.0,
                               fontWeight: FontWeight.bold,
-                               
+
                               color: Theme.of(context).colorScheme.onSurface,
                             ),
                             child: Text("Emergency Notice"),
@@ -63,7 +63,7 @@ class VulnerableSeedsPopup extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     decoration: TextDecoration.none,
                                     fontSize: 16.0,
-                                     
+
                                     color: Theme.of(context)
                                         .colorScheme.onSurface,
                                   ),

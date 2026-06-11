@@ -155,12 +155,12 @@ class BackupServiceV3 extends $BackupService {
 
   BackupVersion getVersionFile(File data) {
     final raf = data.openSync(mode: FileMode.read);
-    
+
     try {
       // Read first 4 bytes to check both version and zip signature
       final buffer = Uint8List(1);
       final bytesRead = raf.readIntoSync(buffer);
-      
+
       if (bytesRead == 0) {
         throw Exception('Invalid backup file: empty file');
       }
@@ -237,14 +237,14 @@ class BackupServiceV3 extends $BackupService {
       throw Exception('Invalid v3 backup: missing data.bin');
     }
     final dataStream = dataFile.rawContent!.getStream();
-    
+
     final decryptedData = File('${file.path}_decrypted'); // decrypted zip file
     if (decryptedData.existsSync()) {
       decryptedData.deleteSync();
     }
     decryptedData.createSync(recursive: true);
     decryptedData.writeAsBytesSync(Uint8List(0), mode: FileMode.write, flush: true);
-    
+
     int chunkIndex = 0;
     for (var chunk in metadata.chunks) {
       chunkIndex++;
@@ -421,15 +421,15 @@ class BackupServiceV3 extends $BackupService {
     int chunkIndex = 0;
     final stopwatch = Stopwatch()..start();
     printV("Starting backup encryption...");
-    
+
     metadata.sha512sum = (await sha512.bind(dataBinUnencrypted.openRead()).first).toString();
 
     final raf = await dataBinUnencrypted.open();
-    
+
 
     while (true) {
       printV("Reading chunk ${chunkIndex++}");
-      
+
       stopwatch.reset();
       final chunk = await raf.read(chunkSize);
       printV("Chunk read completed in ${stopwatch.elapsed}");
@@ -437,7 +437,7 @@ class BackupServiceV3 extends $BackupService {
       if (chunk.length == 0) {
         break;
       }
-      
+
       stopwatch.reset();
       final encryptedChunk = await cake_backup.encrypt(password, chunk);
       printV("Encryption completed in ${stopwatch.elapsed}");
@@ -459,7 +459,7 @@ class BackupServiceV3 extends $BackupService {
           plain: chunk.length,
         ),
       ));
-      
+
       await dataBinWriter.flush();
       printV("Writing completed in ${stopwatch.elapsed}");
     }

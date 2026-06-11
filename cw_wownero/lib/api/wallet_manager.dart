@@ -133,10 +133,10 @@ void restoreWalletFromSeedSync(
   }
 
   wptr = newWptr;
-  
+
   wownero.Wallet_setCacheAttribute(wptr!, key: "cakewallet.passphrase", value: passphrase);
   wownero.Wallet_setCacheAttribute(wptr!, key: "cakewallet.seed", value: seed);
-  
+
   openedWalletsByPath[path] = wptr!;
 
   store();
@@ -158,7 +158,7 @@ void restoreWalletFromKeysSync(
     path: path,
     password: password,
     language: language,
-    spendKeyString: spendKey, 
+    spendKeyString: spendKey,
     newWallet: true, // TODO(mrcyjanek): safe to remove
     restoreHeight: restoreHeight)
    : wownero.WalletManager_createWalletFromKeys(
@@ -217,7 +217,7 @@ void restoreWalletFromPolyseedWithOffset(
     required String seedOffset,
     required String language,
     int nettype = 0}) {
-  
+
   txhistory = null;
   final newWptr = wownero.WalletManager_createWalletFromPolyseed(
     wmPtr,

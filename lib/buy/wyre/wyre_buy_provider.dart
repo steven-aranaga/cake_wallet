@@ -89,7 +89,7 @@ class WyreBuyProvider extends BuyProvider {
       throw BuyException(title: providerDescription, content: 'Url $url is not found!');
     }
 
-    
+
     final responseJSON = json.decode(response.body) as Map<String, dynamic>;
     final urlFromResponse = responseJSON['url'] as String;
     return urlFromResponse;
@@ -120,7 +120,7 @@ class WyreBuyProvider extends BuyProvider {
       throw BuyException(title: providerDescription, content: 'Quote is not found!');
     }
 
-    
+
     final responseJSON = json.decode(response.body) as Map<String, dynamic>;
     final sourceAmount = responseJSON['sourceAmount'] as double;
     final destAmount = responseJSON['destAmount'] as double;

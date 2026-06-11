@@ -844,7 +844,7 @@ abstract class SendViewModelBase extends WalletChangeListenerViewModel with Stor
 
 
       final isSendAll = outputs.any((output) => output.sendAll);
-      
+
       if (!isSendAll) {
         final estimateTxAmountDouble = outputs.fold<double>(0, (acc, output) =>
         acc + (double.tryParse(output.cryptoAmount) ?? 0));

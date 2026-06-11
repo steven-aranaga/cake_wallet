@@ -1157,7 +1157,7 @@ abstract class ExchangeViewModelBase extends WalletChangeListenerViewModel with 
         if (isFixedRateMode && provider.supportsFixedRate == false) {
           continue;
         }
-        
+
         if (_excludeProviderForReceiveExtraId(provider)) {
           continue;
         }
@@ -1234,7 +1234,7 @@ abstract class ExchangeViewModelBase extends WalletChangeListenerViewModel with 
               }
 
               tradesStore.setTrade(trade);
-              if (trade.provider != ExchangeProviderDescription.thorChain) await trade.save();         
+              if (trade.provider != ExchangeProviderDescription.thorChain) await trade.save();
               tradeState = TradeIsCreatedSuccessfully(trade: trade);
 
               /// return after the first successful trade

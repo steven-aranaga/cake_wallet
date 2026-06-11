@@ -187,8 +187,8 @@ build_boost_install_x86_64() {
 build_boost_install_universal() {
 	mkdir lib
 
-	for blib in ${BOOST_B2_BUILD_DIR_ARM_64}/stage/lib/*.a; do 
-	  lipo -create -arch arm64 $blib -arch x86_64 ${BOOST_B2_BUILD_DIR_X86_64}/stage/lib/$(basename $blib) -output lib/$(basename $blib); 
+	for blib in ${BOOST_B2_BUILD_DIR_ARM_64}/stage/lib/*.a; do
+	  lipo -create -arch arm64 $blib -arch x86_64 ${BOOST_B2_BUILD_DIR_X86_64}/stage/lib/$(basename $blib) -output lib/$(basename $blib);
 	done
 
 	cp -r lib/* ${EXTERNAL_MACOS_LIB_DIR}

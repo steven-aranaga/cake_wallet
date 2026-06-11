@@ -41,7 +41,7 @@ class ThirdIntroduction extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                         
+
                         color: Theme.of(context).colorScheme.onSurface,
                         decoration: TextDecoration.none,
                       )),
@@ -52,7 +52,7 @@ class ThirdIntroduction extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
-                             
+
                             color: Theme.of(context).colorScheme.onSurface,
                             decoration: TextDecoration.none,
                           )))

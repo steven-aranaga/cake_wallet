@@ -47,7 +47,7 @@ case $arch in
 		TAG="android-x86"
 		ARCH="i686"
 		ARCH_ABI="x86";;
-	"x86_64"	)  
+	"x86_64"	)
 		CLANG=x86_64-linux-androideabi-clang
  		CXXLANG=x86_64-linux-androideabi-clang++
 		BUILD_64=ON
@@ -61,7 +61,7 @@ rm -rf ./build/release
 mkdir -p ./build/release
 cd ./build/release
 CC=${CLANG} CXX=${CXXLANG} cmake -D USE_DEVICE_TREZOR=OFF -D BUILD_GUI_DEPS=1 -D BUILD_TESTS=OFF -D ARCH=${ARCH} -D STATIC=ON -D BUILD_64=${BUILD_64} -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D INSTALL_VENDORED_LIBUNBOUND=ON -D BUILD_TAG=${TAG} -D CMAKE_SYSTEM_NAME="Android" -D CMAKE_ANDROID_STANDALONE_TOOLCHAIN="${ANDROID_STANDALONE_TOOLCHAIN_PATH}" -D CMAKE_ANDROID_ARCH_ABI=${ARCH_ABI} $FLAGS ../..
-    
+
 make wallet_api -j$THREADS
 find . -path ./lib -prune -o -name '*.a' -exec cp '{}' lib \;
 

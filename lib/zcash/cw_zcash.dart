@@ -206,12 +206,12 @@ class CWZcash extends Zcash {
   dynamic getOptionToType(ReceivePageOption option) {
     return (option as ZcashReceivePageOption).toType();
   }
-  
+
   @override
   void unlockDatabase(String password) {
     return ZcashWalletBase.unlockDatabase(password);
   }
-  
+
   @override
   Future<int> getHeightByDate(DateTime date) {
     return ZcashWalletBase.getHeightByDate(date);
@@ -222,7 +222,7 @@ class CWZcash extends Zcash {
     final zcashWallet = wallet as ZcashWallet;
     return zcashWallet.couldBeZashiWallet();
   }
-  
+
   @override
   Future<void> rescanInternalChange(WalletBase wallet) {
     final zcashWallet = wallet as ZcashWallet;

@@ -423,7 +423,7 @@ class _ContactListBodyState extends State<ContactListBody> {
           SlidableAction(
             onPressed: (_) async {
               final isDelete = await DialogService.showAlertDialog(context);
-  
+
               if (isDelete) {
                 await widget.contactListViewModel.delete(contact);
               }

@@ -238,7 +238,7 @@ class RobinhoodBuyProvider extends BuyProvider {
 
     try {
       final response = await ProxyWrapper().get(clearnetUri: uri, headers: {'accept': 'application/json'});
-      
+
       final responseData = jsonDecode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 200) {

@@ -14,7 +14,7 @@ class CoinControlListItem extends StatelessWidget {
     required this.isFrozen,
     required this.isChange,
     required this.isSilentPayment,
-    required this.isFirst, 
+    required this.isFirst,
     required this.isLast,
     required this.isLoading,
     this.onCheckBoxTap,

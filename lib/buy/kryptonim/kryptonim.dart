@@ -81,7 +81,7 @@ class KryptonimBuyProvider extends BuyProvider {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 401) {
-        
+
         return jsonDecode(response.body) as Map<String, dynamic>;
       } else {
         return {};

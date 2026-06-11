@@ -262,7 +262,7 @@ void storeSync({bool force = false}) async {
   });
   if (lastStorePointer == addr &&
       lastStoreHeight + 75000 > currentWallet!.blockChainHeight() &&
-      !synchronized && 
+      !synchronized &&
       !force) {
     return;
   }

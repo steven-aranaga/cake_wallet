@@ -91,10 +91,10 @@ class DevSharedPreferencesPage extends BasePage {
                 height: double.maxFinite,
                 child: SingleChildScrollView(
                   child: _buildDialogContent(
-                    type, 
-                    newValue, 
-                    listItems, 
-                    textController, 
+                    type,
+                    newValue,
+                    listItems,
+                    textController,
                     (value) => setState(() => newValue = value),
                     (items) => setState(() => listItems = items),
                   ),
@@ -116,10 +116,10 @@ class DevSharedPreferencesPage extends BasePage {
                   child: Text('Save'),
                   onPressed: () async {
                     if (_validateAndUpdateValue(
-                      context, 
-                      type, 
-                      textController, 
-                      listItems, 
+                      context,
+                      type,
+                      textController,
+                      listItems,
                       (value) => newValue = value
                     )) {
                       await viewModel.set(key, type, newValue);
@@ -210,8 +210,8 @@ class DevSharedPreferencesPage extends BasePage {
         BaseTextFormField(
           controller: controller,
           hintText: label,
-          keyboardType: isInteger 
-              ? TextInputType.number 
+          keyboardType: isInteger
+              ? TextInputType.number
               : TextInputType.numberWithOptions(decimal: true),
           inputFormatters: isInteger
               ? [FilteringTextInputFormatter.digitsOnly]
@@ -222,7 +222,7 @@ class DevSharedPreferencesPage extends BasePage {
   }
 
   Widget _buildListEditor(
-    List<String> items, 
+    List<String> items,
     TextEditingController controller,
     Function(List<String>) onListChanged,
   ) {

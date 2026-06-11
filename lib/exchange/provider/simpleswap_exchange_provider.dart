@@ -63,7 +63,7 @@ class SimpleSwapExchangeProvider extends ExchangeProvider {
     final uri = Uri.https(apiAuthority, rangePath, params);
 
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
+
 
     if (response.statusCode == 500) {
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
@@ -103,7 +103,7 @@ class SimpleSwapExchangeProvider extends ExchangeProvider {
       };
       final uri = Uri.https(apiAuthority, getEstimatePath, params);
       final response = await ProxyWrapper().get(clearnetUri: uri);
-      
+
 
       if (response.body == "null") {
         ExchangeProviderLogger.logError(
@@ -123,7 +123,7 @@ class SimpleSwapExchangeProvider extends ExchangeProvider {
         );
         return 0.00;
       }
-      
+
       final data = json.decode(response.body) as String;
       final rate = double.parse(data) / amount;
 
@@ -190,7 +190,7 @@ class SimpleSwapExchangeProvider extends ExchangeProvider {
       headers: headers,
       body: json.encode(body),
     );
-    
+
 
     if (response.statusCode != 200 && response.statusCode != 201) {
       if (response.statusCode == 400) {
@@ -299,8 +299,8 @@ class SimpleSwapExchangeProvider extends ExchangeProvider {
     final params = {'api_key': apiKey, 'id': id};
     final uri = Uri.https(apiAuthority, getExchangePath, params);
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
-    
+
+
     if (response.statusCode == 404) {
       throw TradeNotFoundException(id, provider: description);
     }

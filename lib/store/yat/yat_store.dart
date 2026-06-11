@@ -43,11 +43,11 @@ Future<List<String>> fetchYatAddress(String emojiId, String ticker) async {
   throw Exception();
   //final url = YatLink.emojiIdUrl + emojiId + '/payment';
   //final response = await get(url);
-  
+
   //if (response.statusCode != 200) {
   //  throw YatException(text: response.body.toString());
   //}
-  
+
   //final addresses = <String>[];
   //final currency = ticker.toUpperCase();
   //final responseJSON = json.decode(response.body) as Map<String, dynamic>;
@@ -55,7 +55,7 @@ Future<List<String>> fetchYatAddress(String emojiId, String ticker) async {
   //result.forEach((dynamic key, dynamic value) {
   //  final tag = key as String ?? '';
   //  final record = value as Map<String, dynamic>;
-  
+
   //  if (YatLink.tags[currency]?.contains(tag) ?? false) {
   //    final address = record['address'] as String;
   //    if (address?.isNotEmpty ?? false) {
@@ -80,11 +80,11 @@ Future<String> fetchYatAccessToken(String refreshToken) async {
   //      'Accept': '*/*'
   //    },
   //    body: bodyJson);
-    
+
   //  if (response.statusCode != 200) {
   //    throw YatException(text: response.body.toString());
   //  }
-    
+
   //  final responseJSON = json.decode(response.body) as Map<String, dynamic>;
   //  return  responseJSON['access_token'] as String;
   //}catch(_) {
@@ -110,7 +110,7 @@ Future<String> fetchYatApiKey(String accessKey) async {
   //  if (response.statusCode != 200) {
   //    throw YatException(text: response.body.toString());
   //  }
-    
+
   //  final responseJSON = json.decode(response.body) as Map<String, dynamic>;
   //  return  responseJSON['api_key'] as String;
   //}catch(_) {
@@ -221,7 +221,7 @@ abstract class YatStoreBase with Store {
     accessToken = await secureStorage.read(key: yatAccessTokenKey(_wallet!.walletInfo.name)) ?? '';
     apiKey = await secureStorage.read(key: yatApiKey(_wallet!.walletInfo.name)) ?? '';
   }
- 
+
   @action
   void _onWalletChange(
       WalletBase<Balance, TransactionHistoryBase<TransactionInfo>,
@@ -252,7 +252,7 @@ abstract class YatStoreBase with Store {
   @action
   Future<void> _onRefreshTokenChange() async {
     throw Exception();
-    
+
     //try {
     //  await secureStorage.write(key: yatRefreshTokenKey(_wallet.walletInfo.name), value: refreshToken);
     //  accessToken = await fetchYatAccessToken(refreshToken);
@@ -269,7 +269,7 @@ abstract class YatStoreBase with Store {
     //final result = <String, String>{};
     //final tags = YatLink.tags[_wallet.currency.toString().toUpperCase()];
     //String tag =  tags.first;
-    
+
     //if (_wallet.type == WalletType.monero
     //  && _wallet.walletAddresses.address.startsWith('4')) {
     //  tag = tags.last;
@@ -277,7 +277,7 @@ abstract class YatStoreBase with Store {
     //result[tag] = '${_wallet.walletAddresses.address}|${_wallet.name}';
     //final addressJson = json.encode([result]);
     //final addressJsonBytes = utf8.encode(addressJson);
-    
+
     //return base64.encode(addressJsonBytes);
     return '';
   }

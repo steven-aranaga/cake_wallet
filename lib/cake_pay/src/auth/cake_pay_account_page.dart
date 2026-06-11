@@ -66,7 +66,7 @@ class CakePayAccountPage extends BasePage {
                 ),
               ),
               child: CakePayTile(
-                title: S.of(context).email_address, 
+                title: S.of(context).email_address,
                 subTitle: cakePayAccountViewModel.email
               ),
             ),

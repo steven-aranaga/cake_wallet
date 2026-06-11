@@ -52,7 +52,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
     'BASE': 'basemainnet',
     'ARB': 'arbitrum',
   };
-  
+
   static const supportedTags = [
     'POL',
     'ETH',
@@ -85,7 +85,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
 
     return string;
   }
-  
+
   @override
   String get title => 'XOSwap';
 
@@ -114,7 +114,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
           {'networks': normalizedNetwork, 'query': currency.title});
 
       final response = await ProxyWrapper().get(clearnetUri: uri, headers: _headers);
-      
+
       if (response.statusCode != 200) {
         throw Exception('Failed to fetch assets for ${currency.title} on ${currency.tag}');
       }
@@ -335,7 +335,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
         final responseJSON = json.decode(response.body) as Map<String, dynamic>;
         final error = responseJSON['error'] ?? 'Unknown error';
         final message = responseJSON['message'] ?? '';
-        
+
         ExchangeProviderLogger.logError(
           provider: description,
           function: 'createTrade',
@@ -354,7 +354,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
             'url': uri.toString(),
           },
         );
-        
+
         throw Exception('$error\n$message');
       }
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
@@ -454,7 +454,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
     try {
       final uri = Uri.https(_apiAuthority, '$_apiPath$_orders/$id');
       final response = await ProxyWrapper().get(clearnetUri: uri, headers: _headers);
-      
+
       if (response.statusCode != 200) {
         final responseJSON = json.decode(response.body) as Map<String, dynamic>;
         if (responseJSON.containsKey('code') && responseJSON['code'] == 'NOT_FOUND') {
@@ -505,7 +505,7 @@ class XOSwapExchangeProvider extends ExchangeProvider {
         toAssetTag = 'ETH';
         toAssetBase = 'BASE';
       }
-      
+
       final fromCurrency = CryptoCurrency.safeParseCurrencyFromString(fromAssetBase,tag: fromAssetTag);
       final toCurrency = CryptoCurrency.safeParseCurrencyFromString(toAssetBase,tag: toAssetTag);
 

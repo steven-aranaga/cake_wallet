@@ -414,7 +414,7 @@ abstract class ZanoWalletBase
   Future<bool> checkNodeHealth() async {
     try {
       final status = await getWalletStatus();
-    
+
       return status.isDaemonConnected;
     } catch (_) {
       return false;

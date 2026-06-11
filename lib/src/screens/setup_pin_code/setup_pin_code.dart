@@ -64,7 +64,7 @@ class SetupPinCodePage extends BasePage {
                     if (pinCodeStateKey.currentState != null) {
                       onSuccessfulPinSetup?.call(pinCodeStateKey.currentState!, pin);
                     }
-                    
+
                     state.reset();
                   },
                   alertBarrierDismissible: false,

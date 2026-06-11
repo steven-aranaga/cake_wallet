@@ -240,7 +240,7 @@ abstract class CakePayBuyCardViewModelBase with Store {
       formattedRemainingTime = formatDuration(remainingTime!);
     }
   }
-  
+
   Future<void> logout() async => await _cakePayService.logout();
 
   void _startExpirationTimer() {

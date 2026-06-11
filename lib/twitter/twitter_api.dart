@@ -30,7 +30,7 @@ class TwitterApi {
     if (response.statusCode != 200) {
       throw Exception('Unexpected http status: ${response.statusCode}');
     }
-    
+
 
     final Map<String, dynamic> responseJSON = jsonDecode(response.body) as Map<String, dynamic>;
     if (responseJSON['errors'] != null &&

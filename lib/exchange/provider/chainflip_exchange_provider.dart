@@ -292,7 +292,7 @@ class ChainflipExchangeProvider extends ExchangeProvider {
 
       final from = status['sourceAsset'].toString();
       final to = status['destinationAsset'].toString();
-      
+
       final newTrade = Trade(
         id: id,
         from: _toCurrency(from),

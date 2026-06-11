@@ -28,7 +28,7 @@ void setRootDirFromEnv() =>
 
 void copyDirectory(Directory source, Directory destination) {
   source.listSync(recursive: false).forEach((var entity) {
-    if (entity is Directory) {    
+    if (entity is Directory) {
       var newDirectory = Directory(p.join(destination.absolute.path, p.basename(entity.path)));
       newDirectory.createSync(recursive: true);
       copyDirectory(entity.absolute, newDirectory);
@@ -53,7 +53,7 @@ Future<void> linuxSymlinkSharedPreferences() async {
       if (oldLink.existsSync()) {
         printV("not creating, link exists");
       } else {
-        if (newDir.existsSync()) { 
+        if (newDir.existsSync()) {
           newDir.renameSync("${newPath}_${DateTime.now().millisecondsSinceEpoch~/1000}");
         }
         copyDirectory(oldDir, newDir);
@@ -101,7 +101,7 @@ Future<Directory> getAppDir() async {
       ];
 
       String preferredPath = linuxAppPath.last;
-      
+
       preferredLoop:
       for (String notSoPreferredPath in linuxAppPath) {
         if (notSoPreferredPath == linuxAppPath.last) continue;

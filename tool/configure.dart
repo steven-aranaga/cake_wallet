@@ -995,7 +995,7 @@ abstract class Solana {
   List<String> getDefaultTokenContractAddresses();
   List<String> getDefaultTokenSymbols();
   bool isTokenAlreadyAdded(WalletBase wallet, String contractAddress);
-  
+
   // Jupiter swap transaction handling
   // Signs and prepares a base64-encoded unsigned transaction for sending
   Future<PendingTransaction> signAndPrepareJupiterSwapTransaction(
@@ -1411,16 +1411,16 @@ export 'package:cw_evm/usdt0/usdt0_quote.dart';
   const evmCwPart = "part 'cw_evm.dart';";
   const evmContent = """
 /// Unified abstract class for all EVM chains
-/// 
+///
 /// This replaces separate proxy classes (Ethereum, Polygon, Base, Arbitrum)
 /// with a single unified interface that works for all EVM chains.
 /// Methods take WalletType parameter to determine chain-specific behavior.
 abstract class EVM {
   List<String> getEVMWordList(String language);
-  
+
   /// Create unified wallet service for any EVM chain
   WalletService createEVMWalletService(WalletType walletType, bool isDirect);
-  
+
   /// Generic credential creation - uses WalletType
   WalletCredentials createEVMNewWalletCredentials({
     required String name,
@@ -1429,26 +1429,26 @@ abstract class EVM {
     String? mnemonic,
     String? passphrase,
   });
-  
+
   WalletCredentials createEVMRestoreWalletFromSeedCredentials({
     required String name,
     required String mnemonic,
     required String password,
     String? passphrase,
   });
-  
+
   WalletCredentials createEVMRestoreWalletFromPrivateKey({
     required String name,
     required String privateKey,
     required String password,
   });
-  
+
   WalletCredentials createEVMHardwareWalletCredentials({
     required String name,
     required HardwareAccountData hwAccountData,
     WalletInfo? walletInfo,
   });
-  
+
   // Generic methods that work for all EVM chains
   String getAddress(WalletBase wallet);
   String getPrivateKey(WalletBase wallet);
@@ -1457,7 +1457,7 @@ abstract class EVM {
   TransactionPriority getEVMTransactionPrioritySlow();
   List<TransactionPriority> getTransactionPriorities();
   TransactionPriority deserializeEVMTransactionPriority(int raw);
-  
+
   Object createEVMTransactionCredentials(
     List<Output> outputs, {
     required TransactionPriority? priority,
@@ -1465,7 +1465,7 @@ abstract class EVM {
     int? feeRate,
     bool useBlinkProtection = true,
   });
-  
+
   Object createEVMTransactionCredentialsRaw(
     List<OutputInfo> outputs, {
     TransactionPriority? priority,
@@ -1473,38 +1473,38 @@ abstract class EVM {
     required int feeRate,
     bool useBlinkProtection = true,
   });
-  
+
   int formatterEVMParseAmount(String amount);
   double formatterEVMAmountToDouble({
     TransactionInfo? transaction,
     BigInt? amount,
     int exponent = 18,
   });
-  
+
   List<Erc20Token> getERC20Currencies(WalletBase wallet);
   Future<void> addErc20Token(WalletBase wallet, CryptoCurrency token);
   Future<void> deleteErc20Token(WalletBase wallet, CryptoCurrency token);
   Future<void> removeTokenTransactionsInHistory(WalletBase wallet, CryptoCurrency token);
   Future<Erc20Token?> getErc20Token(WalletBase wallet, String contractAddress);
-  
+
   CryptoCurrency assetOfTransaction(WalletBase wallet, TransactionInfo transaction);
   void updateScanProviderUsageState(WalletBase wallet, bool isEnabled);
   Web3Client? getWeb3Client(WalletBase wallet);
   String getTokenAddress(CryptoCurrency asset);
   BigInt? getERC20AvailableBalance(Object balance);
-  
+
   Future<bool> isApprovalRequired(
     WalletBase wallet,
     String tokenContract,
     String spender,
     BigInt requiredAmount,
   );
-  
+
   Future<BigInt?> getAllowance(
       WalletBase wallet,
       String tokenContract,
       String spender);
-  
+
   Future<PendingTransaction> createTokenApproval(
     WalletBase wallet,
     BigInt amount,
@@ -1513,7 +1513,7 @@ abstract class EVM {
     TransactionPriority? priority,
     {bool useBlinkProtection = true}
   );
-  
+
   Future<PendingTransaction> createRawCallDataTransaction(
     WalletBase wallet,
     String to,
@@ -1524,13 +1524,13 @@ abstract class EVM {
     String? sourceTokenAddress,
     BigInt? sourceTokenAmount}
   );
-  
+
   // Hardware wallet methods
   Future<void> setHardwareWalletService(WalletBase wallet, HardwareWalletService service);
   HardwareWalletService getLedgerHardwareWalletService(ledger.LedgerConnection connection);
   HardwareWalletService getBitboxHardwareWalletService(bitbox.BitboxManager manager);
   HardwareWalletService getTrezorHardwareWalletService(trezor.TrezorConnect connect);
-  
+
   // Utility methods
   List<Erc20Token> getDefaultTokensByChainId(int chainId);
   List<String> getDefaultTokenContractAddresses(WalletBase wallet);
@@ -1538,7 +1538,7 @@ abstract class EVM {
   bool isTokenAlreadyAdded(WalletBase wallet, String contractAddress);
   String? getEVMNativeEstimatedFee(WalletBase wallet);
   String? getEVMERC20EstimatedFee(WalletBase wallet);
-  
+
   // Chain-specific integrations (optional, can be null for non-Ethereum chains)
   Future<BigInt>? getDEuroSavingsBalance(WalletBase wallet) => null;
   Future<BigInt>? getDEuroAccruedInterest(WalletBase wallet) => null;
@@ -1548,7 +1548,7 @@ abstract class EVM {
   Future<PendingTransaction>? removeDEuroSaving(WalletBase wallet, BigInt amount, TransactionPriority priority) => null;
   Future<PendingTransaction>? reinvestDEuroInterest(WalletBase wallet, TransactionPriority priority) => null;
   Future<PendingTransaction>? enableDEuroSaving(WalletBase wallet, TransactionPriority priority) => null;
-  
+
   // Registry helper methods (for backward compatibility helpers)
   int getChainIdByWalletType(WalletType walletType);
   String getChainNameByWalletType(WalletType walletType);
@@ -1567,9 +1567,9 @@ abstract class EVM {
 
   int? getSelectedChainId(WalletBase wallet);
   Future<void> selectChain(WalletBase wallet, int chainId, {required Node node});
-  
+
   String? getExplorerUrlForChainId(int chainId, {bool showProtocol = true});
-  
+
   Future<bool?> getTransactionReceipt(WalletBase wallet, String txHash);
 
   bool hasPriorityFee(int chainId);
@@ -1596,7 +1596,7 @@ abstract class EVM {
     required TransactionPriority priority,
     bool useBlinkProtection = true,
   });
-  
+
   Future<EvmWalletConnectFeeQuote?> getWCBufferedFeeQuote(
     WalletBase wallet,
     TransactionPriority priority,
@@ -1612,7 +1612,7 @@ class ChainInfo {
     required this.shortCode,
     required this.currency,
   });
-  
+
   final int chainId;
   final String name;
   final String shortCode;

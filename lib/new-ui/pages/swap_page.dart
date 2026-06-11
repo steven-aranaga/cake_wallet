@@ -1167,7 +1167,7 @@ class SwapAmountBoxState extends State<SwapAmountBox> {
                     final selected = widget.exchangeViewModel.receiveCurrency;
                     final labelType = memoLabelTypeFor(selected);
                     if (labelType == null) return const SizedBox.shrink();
-                    
+
                     final isDestinationTag = labelType == MemoLabelType.destinationTag;
                     final hint = isDestinationTag
                         ? S.of(context).destination_tag_optional
@@ -1175,7 +1175,7 @@ class SwapAmountBoxState extends State<SwapAmountBox> {
                     final disclaimer = isDestinationTag
                         ? S.of(context).destination_tag_swap_disclaimer
                         : S.of(context).memo_swap_disclaimer;
-                          
+
                     return NewSendMemoInput(
                       memoController: memoController,
                       maxMemoLength: isDestinationTag ? 20 : 256,

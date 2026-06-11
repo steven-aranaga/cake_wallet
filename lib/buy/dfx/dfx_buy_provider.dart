@@ -159,7 +159,7 @@ class DFXBuyProvider extends BuyProvider {
       final response = await ProxyWrapper().get(
         clearnetUri: url,
         headers: {'accept': 'application/json'});
-      
+
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as List<dynamic>;
         for (final item in data) {
@@ -182,7 +182,7 @@ class DFXBuyProvider extends BuyProvider {
 
     try {
       final response = await ProxyWrapper().get(clearnetUri: url, headers: {'accept': 'application/json'});
-      
+
       if (response.statusCode == 200) {
         final responseData = jsonDecode(response.body);
 
@@ -300,7 +300,7 @@ class DFXBuyProvider extends BuyProvider {
         headers: headers,
         body: body,
       );
-      
+
       final responseData = jsonDecode(response.body);
 
       if (response.statusCode == 200) {

@@ -23,7 +23,7 @@ class FioAddressProvider {
       return isFioRegistered;
     }
 
-    
+
     final responseJSON = json.decode(response.body) as Map<String, dynamic>;
     isFioRegistered = responseJSON['is_registered'] as int == 1;
 
@@ -45,7 +45,7 @@ class FioAddressProvider {
       body: json.encode(body),
     );
 
-    
+
     if (response.statusCode == 400) {
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
       final error = responseJSON['error'] as String;

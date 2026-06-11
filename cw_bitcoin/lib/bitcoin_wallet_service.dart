@@ -163,9 +163,9 @@ class BitcoinWalletService extends WalletService<
     final derivationInfo = await credentials.walletInfo!.getDerivationInfo();
     derivationInfo.derivationPath =
         credentials.hwAccountData.derivationPath;
-    
+
     final xpub = convertAnyToXpub(credentials.hwAccountData.xpub!);
-    
+
     await credentials.walletInfo!.save();
     final wallet = await BitcoinWallet(
       password: credentials.password!,

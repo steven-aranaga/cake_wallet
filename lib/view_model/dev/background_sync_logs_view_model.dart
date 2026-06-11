@@ -26,7 +26,7 @@ abstract class BackgroundSyncLogsViewModelBase with Store {
   Future<void> loadLogs() async {
     isLoading = true;
     error = null;
-    
+
     try {
       logData = await _daemon.getLogs();
     } catch (e) {
@@ -41,4 +41,4 @@ abstract class BackgroundSyncLogsViewModelBase with Store {
     await _daemon.clearLogs();
     await loadLogs();
   }
-} 
+}

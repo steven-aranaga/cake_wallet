@@ -85,7 +85,7 @@ abstract class OutputBase with Store {
 
   @observable
   String note;
-  
+
   @observable
   String memo;
 

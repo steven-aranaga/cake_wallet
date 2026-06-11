@@ -16,7 +16,7 @@ class ProxyWrapper {
   factory ProxyWrapper() {
     return _proxyWrapper;
   }
-  
+
   ProxyWrapper._internal();
   Future<ProxySocket> getSocksSocket(bool sslEnabled, String host, int port, {Duration? connectionTimeout}) async {
     logger?.log(
@@ -216,7 +216,7 @@ class ProxyWrapper {
 
     throw Exception("Unable to connect to server");
   }
-  
+
 
   Future<Response> post({
     Map<String, String>? headers,

@@ -7,6 +7,6 @@ func secRandom(count: Int) -> Data? {
     if status == errSecSuccess {
         return Data(bytes: bytes, count: bytes.count)
     }
-    
+
     return nil
 }

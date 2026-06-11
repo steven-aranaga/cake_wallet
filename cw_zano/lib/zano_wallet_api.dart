@@ -112,7 +112,7 @@ mixin ZanoWalletApi {
   Future<void> _setWalletSecret(String key, String value) async {
     final secrets = await _getSecrets();
     secrets[key] = value;
-    await _setSecrets(secrets); 
+    await _setSecrets(secrets);
   }
 
   Future<String?> getPassphrase() async {
@@ -348,7 +348,7 @@ mixin ZanoWalletApi {
     try {
       json = zano.PlainWallet_open(path, password);
     } catch (e) {
-      printV('error in loadingWallet $e'); 
+      printV('error in loadingWallet $e');
       rethrow;
     }
 
@@ -462,8 +462,8 @@ Future<String> callSyncMethod(String methodName, int hWallet, String params) asy
   final invokeResult = await Isolate.run(() async {
     final lib = zanoapi.ZanoC(DynamicLibrary.open(zano.libPath));
     final txid = lib.ZANO_PlainWallet_syncCall(
-      Pointer.fromAddress(method_name_).cast(), 
-      hWallet, 
+      Pointer.fromAddress(method_name_).cast(),
+      hWallet,
       Pointer.fromAddress(params_).cast()
     );
     try {
@@ -496,7 +496,7 @@ Future<String> _getWalletStatus(int hWallet) async {
   final jsonPtr = await Isolate.run(() async {
     final lib = zanoapi.ZanoC(DynamicLibrary.open(zano.libPath));
     final status = lib.ZANO_PlainWallet_getWalletStatus(
-      hWallet, 
+      hWallet,
     );
     return status.address;
   });
@@ -515,7 +515,7 @@ Future<String> _getWalletInfo(int hWallet) async {
   final jsonPtr = await Isolate.run(() async {
     final lib = zanoapi.ZanoC(DynamicLibrary.open(zano.libPath));
     final status = lib.ZANO_PlainWallet_getWalletInfo(
-      hWallet, 
+      hWallet,
     );
     return status.address;
   });

@@ -368,7 +368,7 @@ Future<void> loadWallet(
     var deviceType = 0;
 
     if (Platform.isAndroid || Platform.isIOS) {
-      deviceType = wmPtr.queryWalletDevice( 
+      deviceType = wmPtr.queryWalletDevice(
         keysFileName: "$path.keys",
         password: password,
         kdfRounds: 1,

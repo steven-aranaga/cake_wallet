@@ -32,7 +32,7 @@ case $arch in
 	"i686")    X_ARCH="android-x86";;
 	"x86_64")  X_ARCH="android-x86_64";;
 	*)	   X_ARCH="android-${arch}";;
-esac 	
+esac
 
 cd $WORKDIR
 rm -rf $OPENSSL_SRC_DIR
@@ -46,9 +46,8 @@ CC=clang ANDROID_NDK=$TOOLCHAIN \
 	--with-zlib-lib=${PREFIX}/lib \
 	--prefix=${PREFIX} \
 	--openssldir=${PREFIX} \
-	-D__ANDROID_API__=$API 
+	-D__ANDROID_API__=$API
 make -j$THREADS
 make -j$THREADS install_sw
 
 done
-

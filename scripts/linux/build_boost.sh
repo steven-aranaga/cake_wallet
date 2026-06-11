@@ -20,7 +20,7 @@ cd $EXTERNAL_LINUX_SOURCE_DIR
 rm -rf $BOOST_SRC_DIR
 tar -xvf $BOOST_FILE_PATH -C $EXTERNAL_LINUX_SOURCE_DIR
 cd $BOOST_SRC_DIR
-./bootstrap.sh --prefix=${EXTERNAL_LINUX_DIR} 
+./bootstrap.sh --prefix=${EXTERNAL_LINUX_DIR}
 ./b2 cxxflags=-fPIC cflags=-fPIC \
      --with-chrono \
      --with-date_time \
@@ -33,4 +33,3 @@ cd $BOOST_SRC_DIR
      --with-locale \
     link=static \
     install
- 

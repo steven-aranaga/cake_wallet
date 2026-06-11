@@ -24,7 +24,7 @@ case $arch in
 		CLANG=${arch}-linux-android-clang
 		CXXLANG=${arch}-linux-android-clang++
 		HOST="${arch}-linux-android";;
-esac 
+esac
 
 cd $WORKDIR
 rm -rf $ICONV_SRC_DIR
@@ -35,4 +35,3 @@ make -j$THREADS
 make install
 
 done
-

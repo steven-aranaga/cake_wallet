@@ -55,7 +55,7 @@ int countOfTransactions() => txhistory!.count();
 
 Future<List<Transaction>> getAllTransactions() async {
   List<Transaction> dummyTxs = [];
-  
+
   await txHistoryMutex.acquire();
   txhistory ??= currentWallet!.history();
   final startAddress = txhistory!.ffiAddress() * currentWallet!.ffiAddress();
@@ -78,7 +78,7 @@ Future<List<Transaction>> getAllTransactions() async {
   }
   txHistoryMutex.release();
   final accts = currentWallet!.numSubaddressAccounts();
-  for (var i = 0; i < accts; i++) {  
+  for (var i = 0; i < accts; i++) {
     final fullBalance = currentWallet!.balance(accountIndex: i);
     final availBalance = currentWallet!.unlockedBalance(accountIndex: i);
     if (fullBalance > availBalance) {
@@ -145,7 +145,7 @@ Future<PendingTransactionDescription> createTransactionSync(
     monero.Wallet_synchronized(Pointer.fromAddress(waddr));
   });
 
-  final address_ = address.toNativeUtf8(); 
+  final address_ = address.toNativeUtf8();
   final paymentId_ = paymentId.toNativeUtf8();
   if (preferredInputs.isEmpty) {
     throw MoneroTransactionCreationException("No inputs provided, transaction cannot be constructed");
@@ -211,7 +211,7 @@ Future<PendingTransactionDescription> createTransactionMultDest(
     required int priorityRaw,
     int accountIndex = 0,
     List<String> preferredInputs = const []}) async {
-  
+
   final dstAddrs = outputs.map((e) => e.address).toList();
   final amounts = outputs.map((e) => currentWallet!.amountFromString(e.amount)).toList();
 
@@ -279,7 +279,7 @@ Future<String?> commitTransaction({required Wallet2PendingTransaction tx, requir
       }
       return currentWallet!.errorString();
     })();
-  
+
   }
   if (error != null && error != "no tx keys found for this txid") {
     throw CreationTransactionException(message: error);

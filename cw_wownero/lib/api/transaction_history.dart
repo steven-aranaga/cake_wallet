@@ -45,9 +45,9 @@ Future<List<Transaction>> getAllTransactions() async {
   int size = countOfTransactions();
   final list = List.generate(size, (index) => Transaction(txInfo: wownero.TransactionHistory_transaction(txhistory!, index: index)));
   txHistoryMutex.release();
-  
+
   final accts = wownero.Wallet_numSubaddressAccounts(wptr!);
-  for (var i = 0; i < accts; i++) {  
+  for (var i = 0; i < accts; i++) {
     final fullBalance = wownero.Wallet_balance(wptr!, accountIndex: i);
     final availBalance = wownero.Wallet_unlockedBalance(wptr!, accountIndex: i);
     if (fullBalance > availBalance) {
@@ -91,8 +91,8 @@ Future<PendingTransactionDescription> createTransactionSync(
     List<String> preferredInputs = const []}) async {
 
   final amt = amount == null ? 0 : wownero.Wallet_amountFromString(amount);
-  
-  final address_ = address.toNativeUtf8(); 
+
+  final address_ = address.toNativeUtf8();
   final paymentId_ = paymentId.toNativeUtf8();
   if (preferredInputs.isEmpty) {
     throw WowneroTransactionCreationException("No inputs provided, transaction cannot be constructed");
@@ -155,7 +155,7 @@ PendingTransactionDescription createTransactionMultDestSync(
     required int priorityRaw,
     int accountIndex = 0,
     List<String> preferredInputs = const []}) {
-  
+
   final txptr = wownero.Wallet_createTransactionMultDest(
     wptr!,
     dstAddr: outputs.map((e) => e.address).toList(),
@@ -182,7 +182,7 @@ void commitTransactionFromPointerAddress({required int address}) =>
     commitTransaction(transactionPointer: wownero.PendingTransaction.fromAddress(address));
 
 void commitTransaction({required wownero.PendingTransaction transactionPointer}) {
-  
+
   final txCommit = wownero.PendingTransaction_commit(transactionPointer, filename: '', overwrite: false);
 
   String? error = (() {
@@ -202,7 +202,7 @@ void commitTransaction({required wownero.PendingTransaction transactionPointer})
     })();
 
   }
-  
+
   if (error != null) {
     throw CreationTransactionException(message: error);
   }

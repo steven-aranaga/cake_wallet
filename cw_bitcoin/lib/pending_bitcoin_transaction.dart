@@ -207,8 +207,8 @@ class PendingBitcoinTransaction with PendingTransaction {
     var cborEncoder = CBOREncoder();
     cborEncoder.encodeBytes(sourceBytes);
     var ur = UR("psbt", cborEncoder.getBytes());
-    var urLegacy = UR("crypto-psbt", cborEncoder.getBytes());  
-    // var ur = UR("psbt", Uint8List.fromList(List.generate(64*1024, (int x) => x % 256)));    
+    var urLegacy = UR("crypto-psbt", cborEncoder.getBytes());
+    // var ur = UR("psbt", Uint8List.fromList(List.generate(64*1024, (int x) => x % 256)));
     var encoded = UREncoder(ur, 120);
     var encodedLegacy = UREncoder(urLegacy, 120);
     List<String> values = [];

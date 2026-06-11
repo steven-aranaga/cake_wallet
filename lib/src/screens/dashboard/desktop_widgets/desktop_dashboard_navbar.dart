@@ -40,7 +40,7 @@ class DesktopDashboardNavbar extends StatelessWidget implements ObstructingPrefe
 
   @override
   Size get preferredSize => Size.fromHeight(60);
-  
+
   @override
   bool shouldFullyObstruct(BuildContext context) => false;
 }

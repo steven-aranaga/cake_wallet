@@ -288,14 +288,14 @@ Future<void> generatePubspec({
   required bool hasWalletX,
 }) async {
   // ... existing code ...
-  
+
   const cwWalletX = """
   cw_walletx:
     path: ./cw_walletx
     """;
 
   // ... existing code ...
-  
+
   if (hasWalletX) {
     output += '\n$cwWalletX';
   }
@@ -312,7 +312,7 @@ Future<void> generateWalletTypes({
   required bool hasWalletX,
 }) async {
   // ... existing code ...
-  
+
   if (hasWalletX) {
     outputContent += '\tWalletType.walletx,\n';
   }
@@ -321,7 +321,7 @@ Future<void> generateWalletTypes({
 
 ### 3.2 Update Build Scripts
 
-**Files**: 
+**Files**:
 - `scripts/android/app_config.sh`
 - `scripts/ios/app_config.sh`
 - `scripts/macos/app_config.sh`
@@ -386,7 +386,7 @@ In the `getCredentials` method, add your case:
 @override
 WalletCredentials getCredentials(dynamic _options) {
   // ... existing code ...
-  
+
   switch (type) {
     // ... existing cases ...
     case WalletType.walletx:
@@ -717,9 +717,9 @@ case WalletType.walletx:
 class WalletXPaymentUri implements PaymentUri {
   final String address;
   final CryptoCurrency currency;
-  
+
   WalletXPaymentUri(this.address, this.currency);
-  
+
   @override
   String get uri => 'walletx:$address'; // Adjust scheme as needed
 }
@@ -1002,7 +1002,7 @@ Add:
 
 ### Issue: Proxy not found
 
-**Solution**: 
+**Solution**:
 - Verify `configure.dart` is set up correctly
 - Run the configuration scripts
 - Check that `walletx.dart` is generated (even if empty)

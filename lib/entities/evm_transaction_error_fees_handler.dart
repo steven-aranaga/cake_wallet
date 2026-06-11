@@ -142,8 +142,8 @@ class EVMTransactionErrorFeesHandler {
     final txCostWei = BigInt.parse(values['txCostWei']!);
     final overshotWei = BigInt.parse(values['overshotWei']!);
 
-    final isGenericError = balanceWei == BigInt.zero && 
-                          txCostWei == BigInt.zero && 
+    final isGenericError = balanceWei == BigInt.zero &&
+                          txCostWei == BigInt.zero &&
                           overshotWei == BigInt.zero;
 
     if (isGenericError) {

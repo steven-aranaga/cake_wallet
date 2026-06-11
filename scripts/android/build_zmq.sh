@@ -15,7 +15,7 @@ case $arch in
 	"aarch"	) TARGET="arm";;
 	"i686"		) TARGET="x86";;
 	*		) TARGET="${arch}";;
-esac 
+esac
 
 
 HOST="${TARGET}-linux-android"

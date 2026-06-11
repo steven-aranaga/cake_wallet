@@ -55,7 +55,7 @@ class AssetsSection extends StatelessWidget {
                       title: index > 0 ? "Litecoin Private" : null,
                     );
                   }
-      
+
                   final balance = dashboardViewModel.balanceViewModel.formattedBalances.elementAt(index);
                   return AssetTile(
                     showSwap: dashboardViewModel.isEnabledSwapAction,
@@ -67,7 +67,7 @@ class AssetsSection extends StatelessWidget {
                     chainIconPath: _getChainIconPath(),
                   );
                 });
-      
+
               },
             );
           }

@@ -29,7 +29,7 @@ Future<double> _fetchPrice(String crypto, String fiat, bool torOnly) async {
         "x-api-key": secrets.fiatApiKey,
       }
     );
-    
+
 
     if (response.statusCode != 200) {
       return 0.0;

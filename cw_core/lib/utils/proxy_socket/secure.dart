@@ -11,9 +11,9 @@ class ProxySocketSecure implements ProxySocket {
   bool isClosed = false;
 
   ProxySocketSecure(this.socket);
-  
+
   ProxyAddress get address => ProxyAddress(host: socket.remoteAddress.host, port: socket.remotePort);
-  
+
   @override
   Future<void> close() async {
     try {
@@ -25,7 +25,7 @@ class ProxySocketSecure implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   void destroy() async {
     try {
@@ -37,7 +37,7 @@ class ProxySocketSecure implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   void write(String data) {
     runZonedGuarded(() {
@@ -57,7 +57,7 @@ class ProxySocketSecure implements ProxySocket {
       printV("ProxySocketSecure: write (async error): $e");
     });
   }
-  
+
   @override
   StreamSubscription<List<int>> listen(Function(Uint8List event) onData, {Function(Object error)? onError, Function()? onDone, bool cancelOnError = true}) {
     return socket.listen(

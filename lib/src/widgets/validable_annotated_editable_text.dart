@@ -65,7 +65,7 @@ class ValidatableAnnotatedEditableText extends EditableText {
           backgroundCursorColor: backgroundCursorColor,
           onChanged: onChanged,
           onSubmitted: onSubmitted,
-          
+
           toolbarOptions: const ToolbarOptions(
             copy: true,
             cut: true,

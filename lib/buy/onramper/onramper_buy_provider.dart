@@ -123,7 +123,7 @@ class OnRamperBuyProvider extends BuyProvider {
     try {
       final response =
           await ProxyWrapper().get(clearnetUri: url, headers: {'Authorization': _apiKey, 'accept': 'application/json'});
-      
+
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body) as Map<String, dynamic>;
         final List<dynamic> message = data['message'] as List<dynamic>;
@@ -153,7 +153,7 @@ class OnRamperBuyProvider extends BuyProvider {
     try {
       final response =
           await ProxyWrapper().get(clearnetUri: url, headers: {'Authorization': _apiKey, 'accept': 'application/json'});
-      
+
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body) as Map<String, dynamic>;
@@ -217,7 +217,7 @@ class OnRamperBuyProvider extends BuyProvider {
 
     try {
       final response = await ProxyWrapper().get(clearnetUri: url, headers: headers);
-      
+
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as List<dynamic>;
         if (data.isEmpty) return null;

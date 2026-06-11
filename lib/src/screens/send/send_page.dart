@@ -248,7 +248,7 @@ class SendPage extends BasePage {
                                   child: Observer(
                                     builder: (_) {
                                       final count = sendViewModel.outputs.length;
-                  
+
                                       return count > 1
                                           ? Semantics(
                                               label: 'Page Indicator',
@@ -285,7 +285,7 @@ class SendPage extends BasePage {
                                     builder: (_) {
                                       final templates = sendViewModel.templates;
                                       final itemCount = templates.length;
-                  
+
                                       return Row(
                                         children: <Widget>[
                                           AddTemplateButton(
@@ -318,7 +318,7 @@ class SendPage extends BasePage {
                                                   if (template.additionalRecipients?.isNotEmpty ??
                                                       false) {
                                                     sendViewModel.clearOutputs();
-                  
+
                                                     for (int i = 0;
                                                         i < template.additionalRecipients!.length;
                                                         i++) {
@@ -329,7 +329,7 @@ class SendPage extends BasePage {
                                                         sendViewModel.addOutput();
                                                         output = sendViewModel.outputs[i];
                                                       }
-                  
+
                                                       await _setInputsFromTemplate(
                                                         context,
                                                         output: output,
@@ -405,26 +405,26 @@ class SendPage extends BasePage {
                                   onPressed: () async {
                                     //Request dummy node to get the focus out of the text fields
                                     FocusScope.of(context).requestFocus(FocusNode());
-                  
+
                                     if (sendViewModel.state is IsExecutingState) return;
                                     if (_formKey.currentState != null &&
                                         !_formKey.currentState!.validate()) {
                                       if (sendViewModel.outputs.length > 1) {
                                         showErrorValidationAlert(context);
                                       }
-                  
+
                                       return;
                                     }
-                  
+
                                     final hasInvalidItems = sendViewModel.outputs.any((item) =>
                                     item.address.isEmpty ||
                                     (item.cryptoAmount.isEmpty && !item.sendAll));
-                  
+
                                     if (hasInvalidItems) {
                                       showErrorValidationAlert(context);
                                       return;
                                     }
-                  
+
                                     if (sendViewModel.wallet.isHardwareWallet) {
                                       if (!sendViewModel.hardwareWalletViewModel!.isConnected) {
                                         await Navigator.of(context).pushNamed(Routes.connectDevices,
@@ -443,7 +443,7 @@ class SendPage extends BasePage {
                                             .initWallet(sendViewModel.wallet);
                                       }
                                     }
-                  
+
                                     if (sendViewModel.wallet.type == WalletType.monero) {
                                       int amount = 0;
                                       for (var item in sendViewModel.outputs) {
@@ -459,7 +459,7 @@ class SendPage extends BasePage {
                                         return;
                                       }
                                     }
-                  
+
                                     final check = sendViewModel.shouldDisplayTotp();
                                     authService.authenticateAction(
                                       context,

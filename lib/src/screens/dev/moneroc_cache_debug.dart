@@ -142,11 +142,11 @@ class _JsonExplorerState extends State<JsonExplorer> {
 
   void _buildItemList() {
     _allItems.clear();
-    
+
     if (widget.data is Map) {
       final map = widget.data as Map<String, dynamic>;
       final sortedKeys = map.keys.toList()..sort();
-      
+
       for (final key in sortedKeys) {
         _allItems.add(CacheItem(
           key: key,
@@ -164,7 +164,7 @@ class _JsonExplorerState extends State<JsonExplorer> {
         ));
       }
     }
-    
+
     _applyFilter();
   }
 
@@ -209,10 +209,10 @@ class _JsonExplorerState extends State<JsonExplorer> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final totalItems = widget.data is Map 
-        ? (widget.data as Map).length 
-        : widget.data is List 
-            ? (widget.data as List).length 
+    final totalItems = widget.data is Map
+        ? (widget.data as Map).length
+        : widget.data is List
+            ? (widget.data as List).length
             : 0;
 
     return Column(
@@ -229,7 +229,7 @@ class _JsonExplorerState extends State<JsonExplorer> {
                     prefixIcon: const Icon(Icons.search),
                     border: const OutlineInputBorder(),
                     isDense: true,
-                    suffixText: _searchQuery.isNotEmpty 
+                    suffixText: _searchQuery.isNotEmpty
                         ? '${_filteredItems.length} found'
                         : null,
                   ),
@@ -309,11 +309,11 @@ class CacheItemTile extends StatelessWidget {
   Color _getTypeColor(BuildContext context, dynamic value) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     if (value == null) {
       return Colors.grey;
     }
-    
+
     switch (value.runtimeType) {
       case String:
         return Colors.green;
@@ -335,22 +335,22 @@ class CacheItemTile extends StatelessWidget {
 
   String _getValuePreview(dynamic value) {
     if (value == null) return 'null';
-    
+
     if (value is Map) {
       return '{${value.length} items}';
     }
-    
+
     if (value is List) {
       return '[${value.length} items]';
     }
-    
+
     if (value is String) {
       if (value.length > 100) {
         return '"${value.substring(0, 97)}..."';
       }
       return '"$value"';
     }
-    
+
     final str = value.toString();
     if (str.length > 100) {
       return '${str.substring(0, 97)}...';
@@ -405,7 +405,7 @@ class CacheItemTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       child: ListTile(
         leading: Icon(
-          canNavigate 
+          canNavigate
               ? (item.value is Map ? Icons.folder : Icons.list)
               : Icons.description,
           color: _getTypeColor(context, item.value),

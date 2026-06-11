@@ -14,12 +14,12 @@ abstract class EncryptionFileUtils {
 }
 
 class Salsa20EncryhptionFileUtils extends EncryptionFileUtils {
-	// Requires legacy complex key + iv as password 
+	// Requires legacy complex key + iv as password
 	@override
 	Future<void> write({required String path, required String password, required String data}) async
 		=> await file.write(path: path, password: password, data: data);
 
-	// Requires legacy complex key + iv as password 
+	// Requires legacy complex key + iv as password
 	@override
 	Future<String> read({required String path, required String password}) async
 		=> await file.read(path: path, password: password);
@@ -31,7 +31,7 @@ class XChaCha20EncryptionFileUtils extends EncryptionFileUtils {
 		final encrypted = await cwb.encrypt(password, Uint8List.fromList(data.codeUnits));
 		await File(path).writeAsBytes(encrypted);
 	}
-	
+
 	@override
 	Future<String> read({required String path, required String password}) async {
 		final file = File(path);

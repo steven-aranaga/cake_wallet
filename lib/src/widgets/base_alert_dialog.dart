@@ -66,7 +66,7 @@ class BaseAlertDialog extends StatelessWidget {
   Key? rightActionButtonKey;
 
   Key? dialogKey;
-  
+
   AlertButtonStyle? get leftAlertButtonStyle => null;
 
   AlertButtonStyle? get rightAlertButtonStyle => null;

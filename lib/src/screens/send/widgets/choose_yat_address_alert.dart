@@ -92,7 +92,7 @@ class ChooseYatAddressButtonsState extends State<ChooseYatAddressButtons> {
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
-                             
+
                             color: Theme.of(context).colorScheme.onSurfaceVariant,
                             decoration: TextDecoration.none,
                           ),

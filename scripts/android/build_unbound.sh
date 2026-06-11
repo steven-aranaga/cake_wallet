@@ -23,7 +23,7 @@ case $arch in
 	"aarch")   HOST="arm-linux-androideabi";;
 	"i686")    HOST="x86-linux-android";;
 	*)	       HOST="${arch}-linux-android";;
-esac 
+esac
 
 ./buildconf.sh
 CC=clang CXX=clang++ ./configure --enable-static --disable-shared --prefix=${PREFIX} --host=${HOST}
@@ -43,7 +43,7 @@ TOOLCHAIN=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64
 case $arch in
 	"aarch")   TOOLCHAIN_BIN_PATH=${TOOLCHAIN_BASE_DIR}_${arch}/arm-linux-androideabi/bin;;
 	*)	       TOOLCHAIN_BIN_PATH=${TOOLCHAIN_BASE_DIR}_${arch}/${arch}-linux-android/bin;;
-esac 
+esac
 
 PATH="${TOOLCHAIN_BIN_PATH}:${TOOLCHAIN_BASE_DIR}_${arch}/bin:${ORIGINAL_PATH}"
 echo $PATH

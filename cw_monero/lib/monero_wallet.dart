@@ -190,11 +190,11 @@ abstract class MoneroWalletBase extends WalletBase<MoneroBalance,
     try {
       // Check if the wallet is currently connected to the daemon
       final isConnected = await monero_wallet.isConnected();
-      
+
       if (!isConnected) {
         return false; // It's not connected to daemon
       }
-      
+
       // Check to get current node height to ensure daemon is responsive
       final nodeHeight = await monero_wallet.getNodeHeight();
       return nodeHeight > 0;
@@ -550,13 +550,13 @@ abstract class MoneroWalletBase extends WalletBase<MoneroBalance,
           Directory(await pathForWalletDir(name: name, type: type));
       final newWalletDirPath =
           await pathForWalletDir(name: newWalletName, type: type);
-      
+
       // Create new directory if it doesn't exist
       await Directory(newWalletDirPath).create(recursive: true);
-      
+
       // -- use new waller folder to copy files with old names still --
       final currentWalletPath = currentWalletDir.path + '/$name';
-      
+
       final currentCacheFile = File(currentWalletPath);
       final currentKeysFile = File('$currentWalletPath.keys');
       final currentAddressListFile = File('$currentWalletPath.address.txt');
@@ -576,7 +576,7 @@ abstract class MoneroWalletBase extends WalletBase<MoneroBalance,
       }
 
       await currentWalletDir.delete(recursive: true);
-      
+
       await backupWalletFiles(newWalletName);
     } catch (e) {
       final currentWalletPath = await pathForWallet(name: name, type: type);
@@ -771,13 +771,13 @@ abstract class MoneroWalletBase extends WalletBase<MoneroBalance,
 
       final currentIds = transactionHistory.transactions.keys.toSet();
       final newIds = transactions.keys.toSet();
-      
+
       // Remove transactions that no longer exist
-      currentIds.difference(newIds).forEach((id) => 
+      currentIds.difference(newIds).forEach((id) =>
           transactionHistory.transactions.remove(id));
-      
+
       // Add or update transactions
-      transactions.forEach((key, tx) => 
+      transactions.forEach((key, tx) =>
           transactionHistory.transactions[key] = tx);
       await transactionHistory.save();
       _isTransactionUpdating = false;

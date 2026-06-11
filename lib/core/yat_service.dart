@@ -13,7 +13,7 @@ class YatService {
 
   static String lookupEmojiUrl(String emojiId) =>
       "$apiUrl/emoji_id/$emojiId/payment";
-  
+
   static const String MONERO_SUB_ADDRESS = '0x1002';
   static const String MONERO_STD_ADDRESS = '0x1001';
   static const tags = {
@@ -34,7 +34,7 @@ class YatService {
 
     try {
       final response = await ProxyWrapper().get(clearnetUri: uri);
-      
+
       final resBody = json.decode(response.body) as Map<String, dynamic>;
       final results = resBody["result"] as Map<dynamic, dynamic>;
       // Favour a subaddress over a standard address.

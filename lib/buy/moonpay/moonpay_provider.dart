@@ -104,7 +104,7 @@ class MoonPayProvider extends BuyProvider {
       headers: {'Content-Type': 'application/json', 'x-api-key': _exchangeHelperApiKey},
       body: json.encode({'query': query}),
     );
-    
+
 
     if (response.statusCode == 200) {
       return (jsonDecode(response.body) as Map<String, dynamic>)['signature'] as String;
@@ -128,7 +128,7 @@ class MoonPayProvider extends BuyProvider {
         clearnetUri: url,
         headers: {'accept': 'application/json'},
       );
-      
+
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;
       } else {
@@ -200,7 +200,7 @@ class MoonPayProvider extends BuyProvider {
     final url = Uri.https(_baseUrl, path, params);
     try {
       final response = await ProxyWrapper().get(clearnetUri: url);
-      
+
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -315,7 +315,7 @@ class MoonPayProvider extends BuyProvider {
     final url = _apiUrl + _transactionsSuffix + '/$id' + '?apiKey=' + _apiKey;
     final uri = Uri.parse(url);
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
+
 
     if (response.statusCode != 200) {
       throw BuyException(title: providerDescription, content: 'Transaction $id is not found!');

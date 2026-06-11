@@ -112,7 +112,7 @@ void main() {
 #XMR
 89bH6i3ftaWSWuPJJYSQuuApWJ8xzinCEbbnAXN1Z3mGGUuAFdpBUg82R9MvJDSheJ6kW2dyMQEFUGM4tsZqRb2Q75UXqvc
 
-#BTC Silent Payments 
+#BTC Silent Payments
 sp1qq0avpawwjg4l66p6lqafj0vlvm6rlhdc6qt0r6dfual835vhs3gvkq63pechaqezvn7j7uj2jucwj5k7nenpw2r86wf42xv6wqdvxuk5rggrul45
 
 #LTC MWEB

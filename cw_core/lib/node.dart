@@ -228,7 +228,7 @@ class Node extends HiveObject with Keyable {
         body: jsonBody,
       );
 
-      
+
       final resBody = json.decode(response.body) as Map<String, dynamic>;
 
       return resBody['result']['height'] != null;
@@ -355,7 +355,7 @@ class Node extends HiveObject with Keyable {
           },
         ),
       );
-      
+
       final data = jsonDecode(response.body);
       if (response.statusCode != 200 ||
           data["error"] != null ||

@@ -9,11 +9,11 @@ class ProxySocketInsecure implements ProxySocket {
   final Socket socket;
 
   ProxySocketInsecure(this.socket);
-  
+
   bool isClosed = false;
 
   ProxyAddress get address => ProxyAddress(host: socket.remoteAddress.host, port: socket.remotePort);
-  
+
   @override
   Future<void> close() async {
     try {
@@ -25,7 +25,7 @@ class ProxySocketInsecure implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   void destroy() async {
     try {
@@ -37,7 +37,7 @@ class ProxySocketInsecure implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   void write(String data) {
     try {
@@ -51,7 +51,7 @@ class ProxySocketInsecure implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   StreamSubscription<List<int>> listen(Function(Uint8List event) onData, {Function(Object error)? onError, Function()? onDone, bool cancelOnError = true}) {
     return socket.listen(

@@ -30,7 +30,7 @@ abstract class DevSecurePreferencesBase with Store {
 
   @action
   Future<void> delete(String key) async {
-    
+
   }
 
   dynamic get(String key) {
@@ -47,7 +47,7 @@ abstract class DevSecurePreferencesBase with Store {
   }
 
   Future<void> set(String key, PreferenceType type, dynamic value) async {
-    
+
   }
 
   PreferenceType getPreferenceType(String key) {

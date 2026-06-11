@@ -89,8 +89,8 @@ abstract class WalletListViewModelBase with Store {
 
   bool get ascending => _appStore.settingsStore.walletListAscending;
 
-  /// Serializes updateList() calls: each caller waits for the previous one to finish, then runs. 
-  /// 
+  /// Serializes updateList() calls: each caller waits for the previous one to finish, then runs.
+  ///
   /// This basically ensures that all calls to updateList() are executed.
   Future<void> _lastUpdate = Future.value();
 

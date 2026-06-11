@@ -18,7 +18,7 @@ class SignForm extends StatefulWidget {
   final WalletType type;
   final bool includeAddress;
   final int? chainId;
-  
+
   @override
   SignFormState createState() => SignFormState();
 }

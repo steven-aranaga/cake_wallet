@@ -2,7 +2,7 @@ import UIKit
 import Flutter
 
 @main
-@objc class AppDelegate: FlutterAppDelegate {    
+@objc class AppDelegate: FlutterAppDelegate {
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -12,14 +12,14 @@ import Flutter
         }
 
         makeSecure()
-        
+
         let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
         let legacyMigrationChannel = FlutterMethodChannel(
             name: "com.cakewallet.cakewallet/legacy_wallet_migration",
             binaryMessenger: controller.binaryMessenger)
         legacyMigrationChannel.setMethodCallHandler({
             (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-            
+
             switch call.method {
             case "decrypt":
                 guard let args = call.arguments as? Dictionary<String, Any>,
@@ -29,7 +29,7 @@ import Flutter
                     result(nil)
                     return
                 }
-                
+
                 let content = decrypt(data: data.data, key: key, salt: salt)
                 result(content)
             case "read_user_defaults":
@@ -39,9 +39,9 @@ import Flutter
                     result(nil)
                     return
                 }
-                
+
                 var value: Any?
-                
+
                 switch (type) {
                 case "string":
                     value = UserDefaults.standard.string(forKey: key)
@@ -52,13 +52,13 @@ import Flutter
                 default:
                     break
                 }
-                
+
                 result(value)
             default:
                 result(FlutterMethodNotImplemented)
             }
         })
-        
+
         let utilsChannel = FlutterMethodChannel(
             name: "com.cake_wallet/native_utils",
             binaryMessenger: controller.binaryMessenger)
@@ -79,25 +79,25 @@ import Flutter
                     result(nil)
                     return
                 }
-                
+
                 if isAppSecure {
                      self?.textField.isSecureTextEntry = true
                 } else {
                     self?.textField.isSecureTextEntry = false
                 }
-                
+
                 result(nil)
             default:
                 result(FlutterMethodNotImplemented)
             }
         })
-                
+
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
+
     private var textField = UITextField()
-    
+
     private func makeSecure() {
         if (!self.window.subviews.contains(textField)) {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: textField.frame.self.width, height: textField.frame.self.height))

@@ -80,7 +80,7 @@ class MeldBuyProvider extends BuyProvider {
           'content-type': 'application/json',
         },
       );
-      
+
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as List<dynamic>;
@@ -136,7 +136,7 @@ class MeldBuyProvider extends BuyProvider {
         headers: headers,
         body: body,
       );
-      
+
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as Map<String, dynamic>;

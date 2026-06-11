@@ -119,7 +119,7 @@ class _PowNodeCreateOrEditPageState extends State<PowNodeCreateOrEditPage> {
                                                       actionLeftButton: () => Navigator.pop(context, false));
                                                 }) ??
                                             false;
-        
+
                                         if (confirmed) {
                                           await widget.editingNode!.delete();
                                           Navigator.of(context).pop();
@@ -141,7 +141,7 @@ class _PowNodeCreateOrEditPageState extends State<PowNodeCreateOrEditPage> {
                                           !_formKey.currentState!.validate()) {
                                         return;
                                       }
-        
+
                                       await widget.nodeCreateOrEditViewModel.save(
                                           editingNode: widget.editingNode, saveAsCurrent: widget.isSelected ?? false);
                                       Navigator.of(context).pop();

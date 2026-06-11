@@ -44,7 +44,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
     const url = apiBaseUrl + permissionPath;
     final uri = Uri.parse(url);
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
+
     if (response.statusCode == 500) {
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
       final error = responseJSON['error']['message'] as String;
@@ -74,7 +74,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
 
     final uri = Uri.parse(url);
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
+
 
     if (response.statusCode == 500) {
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
@@ -123,7 +123,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
 
       final uri = Uri.parse(url);
       final response = await ProxyWrapper().get(clearnetUri: uri);
-      
+
       final responseJSON = json.decode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 500) {
@@ -240,7 +240,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
       headers: headers,
       body: json.encode(body),
     );
-    
+
 
     if (response.statusCode != 201) {
       if (response.statusCode == 400) {
@@ -346,7 +346,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
     final url = apiBaseUrl + orderPath + '/' + id;
     final uri = Uri.parse(url);
     final response = await ProxyWrapper().get(clearnetUri: uri);
-    
+
     if (response.statusCode == 404) {
       throw TradeNotFoundException(id, provider: description);
     }
@@ -415,7 +415,7 @@ class SideShiftExchangeProvider extends ExchangeProvider {
       headers: headers,
       body: json.encode(body),
     );
-    
+
 
     if (response.statusCode != 201) {
       if (response.statusCode == 400) {

@@ -79,4 +79,4 @@ await themeStore.setThemeMode(ThemeMode.dark);
 - Ensure proper contrast ratios for accessibility.
 - Test all changes in both light and dark modes.
 - Update this documentation if you add new color tokens or theme variants.
-- Keep theme files organized and focused. 
+- Keep theme files organized and focused.

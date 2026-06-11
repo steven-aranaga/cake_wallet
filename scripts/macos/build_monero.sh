@@ -15,7 +15,7 @@ echo "
 ============================ MONERO ============================
 "
 
-echo "Cloning monero from - $MONERO_URL to - $MONERO_DIR_PATH"		
+echo "Cloning monero from - $MONERO_URL to - $MONERO_DIR_PATH"
 git clone $MONERO_URL $MONERO_DIR_PATH
 cd $MONERO_DIR_PATH
 git checkout $MONERO_VERSION

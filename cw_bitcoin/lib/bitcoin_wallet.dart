@@ -140,7 +140,7 @@ abstract class BitcoinWalletBase extends ElectrumWallet with Store {
     autorun((_) {
       this.walletAddresses.isEnabledAutoGenerateSubaddress = this.isEnabledAutoGenerateSubaddress;
     });
-    
+
     reaction((_) => this.useLightning, (bool useLightning) {
       if (useLightning && LightningWallet.isAvailable) {
         if (mnemonic != null) {

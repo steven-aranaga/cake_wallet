@@ -60,7 +60,7 @@ abstract class ExchangeProviderLogsViewModelBase with Store {
   void loadLogs() {
     isLoading = true;
     error = null;
-    
+
     try {
       logs.clear();
       logs.addAll(ExchangeProviderLogger.logs);

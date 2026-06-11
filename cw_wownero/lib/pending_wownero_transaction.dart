@@ -53,7 +53,7 @@ class PendingWowneroTransaction with PendingTransaction {
       rethrow;
     }
   }
-  
+
   @override
   Future<Map<String, String>> commitUR() {
     throw UnimplementedError();

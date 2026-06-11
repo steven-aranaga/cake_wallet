@@ -9,10 +9,10 @@ class ProxySocketSocks implements ProxySocket {
   final SOCKSSocket socket;
   bool isClosed = false;
   ProxySocketSocks(this.socket);
-  
+
   @override
   ProxyAddress get address => ProxyAddress(host: socket.proxyHost, port: socket.proxyPort);
-  
+
   @override
   Future<void> close() async {
     try {
@@ -24,10 +24,10 @@ class ProxySocketSocks implements ProxySocket {
       return;
     }
   }
-  
+
   @override
   void destroy() => close();
-  
+
   @override
   void write(String data) {
     try {
@@ -54,4 +54,3 @@ class ProxySocketSocks implements ProxySocket {
     );
   }
 }
-

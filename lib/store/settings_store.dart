@@ -995,7 +995,7 @@ abstract class SettingsStoreBase with Store {
 
   @observable
   bool mwebCardDisplay;
-  
+
   @observable
   bool showZcashMissingFundsCard;
 
@@ -1572,7 +1572,7 @@ abstract class SettingsStoreBase with Store {
 
     final mwebAdDismissed =
         await sharedPreferences.getBool(PreferencesKey.mwebAdDismissed) ?? false;
-    
+
     final balanceHideCounter = await sharedPreferences.getInt(PreferencesKey.balanceHideCounter) ?? 0;
 
     return SettingsStore(

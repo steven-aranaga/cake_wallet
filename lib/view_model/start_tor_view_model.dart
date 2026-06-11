@@ -40,7 +40,7 @@ abstract class StartTorViewModelBase with Store {
     remainingSeconds = waitTimeInSeconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       remainingSeconds -= 1;
-      
+
       if (remainingSeconds <= 0) {
         timer.cancel();
         timeoutReached = true;
@@ -92,4 +92,4 @@ abstract class StartTorViewModelBase with Store {
     _timer?.cancel();
     _timer = null;
   }
-} 
+}

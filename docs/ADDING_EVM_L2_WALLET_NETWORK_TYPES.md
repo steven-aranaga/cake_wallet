@@ -347,10 +347,10 @@ import 'package:cw_evm/clients/evm_chain_client.dart';
 
 class OptimismClient extends EVMChainClient {
   OptimismClient() : super(chainId: 10);
-  
+
   // Only override methods if custom behavior is needed
   // For example, if Optimism has special transaction formatting:
-  
+
   // @override
   // Future<List<EVMChainTransactionModel>> fetchTransactions(...) async {
   //   // Custom implementation
@@ -468,7 +468,7 @@ If you need a specific box name pattern:
 ```dart
 class Erc20Token extends CryptoCurrency {
   // ... existing code ...
-  
+
   static const String optimismBoxName = 'optimism_erc20_tokens';
 }
 ```
@@ -479,15 +479,15 @@ class Erc20Token extends CryptoCurrency {
 
 Once you've completed the steps above, the following will work automatically:
 
-✅ **Chain appears in dropdown** - The chain selection UI (`EvmSwitcher`) automatically shows your new chain from the registry  
-✅ **Wallet creation** - Users can create `WalletType.evm` wallets and switch to your chain  
-✅ **Chain switching** - Users can switch between chains seamlessly  
-✅ **All operations** - Balance fetching, transaction sending, etc. all work  
-✅ **Transaction filtering** - Transactions are automatically filtered by `chainId`  
-✅ **Node connection** - Automatic node connection when switching chains (uses `chainId` to find correct nodes)  
-✅ **Balance updates** - Automatic balance refresh when switching chains  
-✅ **ERC20 tokens** - Default tokens are automatically loaded  
-✅ **Transaction history** - Separate history files per chain  
+✅ **Chain appears in dropdown** - The chain selection UI (`EvmSwitcher`) automatically shows your new chain from the registry
+✅ **Wallet creation** - Users can create `WalletType.evm` wallets and switch to your chain
+✅ **Chain switching** - Users can switch between chains seamlessly
+✅ **All operations** - Balance fetching, transaction sending, etc. all work
+✅ **Transaction filtering** - Transactions are automatically filtered by `chainId`
+✅ **Node connection** - Automatic node connection when switching chains (uses `chainId` to find correct nodes)
+✅ **Balance updates** - Automatic balance refresh when switching chains
+✅ **ERC20 tokens** - Default tokens are automatically loaded
+✅ **Transaction history** - Separate history files per chain
 ✅ **Backward compatibility** - Old wallet types continue to work
 
 ## Testing Checklist
@@ -508,7 +508,7 @@ Once you've completed the steps above, the following will work automatically:
 
 ### Issue: Chain doesn't appear in dropdown
 
-**Solution**: 
+**Solution**:
 - Verify the chain is registered in `EvmChainRegistry.initialize()`
 - Check that `EvmChainRegistry().initialize()` is called during app startup
 - Verify the registry is initialized before the UI tries to load chains
@@ -531,7 +531,7 @@ Once you've completed the steps above, the following will work automatically:
 
 ### Issue: Default tokens not loading
 
-**Solution**: 
+**Solution**:
 - Verify tokens are added to `EVMChainDefaultTokens.getDefaultTokensByChainId()`
 - Check that `addInitialTokens()` is called during wallet initialization
 - Ensure token file follows the pattern: `class OptimismTokens { static List<Erc20Token> get tokens { ... } }`
@@ -570,20 +570,20 @@ Once you've completed the steps above, the following will work automatically:
 
 ### Key Points
 
-✅ **Use `WalletType.evm` for new chains** - No need to create new `WalletType` enum values  
-✅ **Everything is `chainId`-based** - All operations use `chainId`, not `walletType`  
-✅ **Registry-driven** - Chain configuration is centralized in `EvmChainRegistry`  
-✅ **Backward compatible** - Old wallet types (ethereum, polygon, base, arbitrum) still work  
-✅ **No proxy files needed** - The unified `evm` proxy handles all chains  
-✅ **Automatic chain switching** - Users can switch chains without creating new wallets  
+✅ **Use `WalletType.evm` for new chains** - No need to create new `WalletType` enum values
+✅ **Everything is `chainId`-based** - All operations use `chainId`, not `walletType`
+✅ **Registry-driven** - Chain configuration is centralized in `EvmChainRegistry`
+✅ **Backward compatible** - Old wallet types (ethereum, polygon, base, arbitrum) still work
+✅ **No proxy files needed** - The unified `evm` proxy handles all chains
+✅ **Automatic chain switching** - Users can switch chains without creating new wallets
 
 ### What You DON'T Need to Do
 
-❌ Create a new `WalletType` enum value (use `WalletType.evm`)  
-❌ Create a new proxy file (unified proxy handles all chains)  
-❌ Create a new wallet service (unified service handles all chains)  
-❌ Create a new wallet class (unified `EVMChainWallet` handles all chains)  
-❌ Update view models (they work with any EVM chain via proxy)  
-❌ Update UI components (chain switcher auto-populates from registry)  
+❌ Create a new `WalletType` enum value (use `WalletType.evm`)
+❌ Create a new proxy file (unified proxy handles all chains)
+❌ Create a new wallet service (unified service handles all chains)
+❌ Create a new wallet class (unified `EVMChainWallet` handles all chains)
+❌ Update view models (they work with any EVM chain via proxy)
+❌ Update UI components (chain switcher auto-populates from registry)
 
 **Key Point**: With the unified EVM architecture, adding new L2 chains is now much simpler - most chains only require Registry configuration and default tokens!

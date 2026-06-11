@@ -12,7 +12,7 @@ void connectMapToListWithTransform<T extends Keyable, Y extends Keyable>(
     if (change.type == null) {
       return;
     }
-    
+
     switch (change.type) {
       case OperationType.add:
         if (filter?.call(change.newValue) ?? true) {

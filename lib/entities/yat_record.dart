@@ -9,5 +9,5 @@ class YatRecord {
       category = json['category'] as String;
 
   String category;
-  String address; 
+  String address;
 }

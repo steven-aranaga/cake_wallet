@@ -46,7 +46,7 @@ class MemoryProxyLogger implements ProxyLogger {
     required RequestMethod method,
     required Uint8List body,
     required very_insecure_http_do_not_use.Response? response,
-    required RequestNetwork network, 
+    required RequestNetwork network,
     required String? error,
   }) {
     final trace = StackTrace.current;

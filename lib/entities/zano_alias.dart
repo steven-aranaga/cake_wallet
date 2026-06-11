@@ -16,7 +16,7 @@ class ZanoAlias {
           "params": {"alias": alias}
         }),
       );
-      
+
       final jsonParsed = json.decode(response.body) as Map<String, dynamic>;
 
       return jsonParsed['result']['alias_details']['address'] as String?;

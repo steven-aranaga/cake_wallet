@@ -58,7 +58,7 @@ class AnyPayApi {
       headers: headers,
       body: json.encode(body),
     );
-    
+
     if (response.statusCode != 200) {
 			await ExceptionHandler.onError(FlutterErrorDetails(exception: response));
       throw Exception('Unexpected response http code: ${response.statusCode}');
@@ -88,7 +88,7 @@ class AnyPayApi {
       headers: headers,
       body: json.encode(body),
     );
-    
+
 		if (response.statusCode == 400) {
 			final decodedBody = json.decode(response.body) as Map<String, dynamic>;
 			throw Exception(decodedBody['message'] as String? ?? 'Unexpected response\nError code: 400');

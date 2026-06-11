@@ -39,15 +39,15 @@ class InsufficientGasFeeException implements Exception {
   static String _buildMessage(BigInt? requiredGasFee, BigInt? currentBalance) {
     const baseMessage = 'Insufficient ETH for gas fees.';
     const addEthMessage = ' Please add ETH to your wallet to cover transaction fees.';
-    
+
     if (requiredGasFee != null) {
       final requiredEth = (requiredGasFee / BigInt.from(10).pow(18)).toStringAsFixed(8);
-      final balanceInfo = currentBalance != null 
+      final balanceInfo = currentBalance != null
           ? ', Available: ${(currentBalance / BigInt.from(10).pow(18)).toStringAsFixed(8)} ETH'
           : '';
       return '$baseMessage Required: ~$requiredEth ETH$balanceInfo.$addEthMessage';
     }
-    
+
     return '$baseMessage$addEthMessage';
   }
 

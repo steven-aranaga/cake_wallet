@@ -45,7 +45,7 @@ class TransactionRow extends StatelessWidget {
               child: (isShield) ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SvgPicture.asset('assets/images/tx_shield.svg'),
-              ) : 
+              ) :
                 Image.asset(direction == TransactionDirection.incoming
                   ? 'assets/images/down_arrow.png'
                   : 'assets/images/up_arrow.png'),

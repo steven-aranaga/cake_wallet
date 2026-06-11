@@ -128,7 +128,7 @@ class _NodeCreateOrEditPageState extends State<NodeCreateOrEditPage> {
                                         ),
                                       ) ??
                                       false;
-        
+
                                   if (confirmed) {
                                     await widget.editingNode!.delete();
                                     Navigator.of(context).pop();
@@ -151,7 +151,7 @@ class _NodeCreateOrEditPageState extends State<NodeCreateOrEditPage> {
                                   if (_nodeFormKey.currentState != null && !_nodeFormKey.currentState!.validate()) {
                                     return;
                                   }
-        
+
                                   await widget.nodeCreateOrEditViewModel.save(
                                       editingNode: widget.editingNode, saveAsCurrent: widget.isSelected ?? false);
                                   if (context.mounted) {

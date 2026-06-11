@@ -1,8 +1,8 @@
 const textDirectionDeclaration = """
-      
+
   @override
   TextDirection get textDirection => TextDirection.ltr;
-  
+
 """;
 
 const classDeclaration = """
@@ -30,7 +30,7 @@ class S implements WidgetsLocalizations {
 
   @override
   String get reorderItemToStart => "reorderItemToStart";
-  
+
   @override
   String get reorderItemToEnd => "reorderItemToEnd";
 
@@ -48,19 +48,19 @@ class S implements WidgetsLocalizations {
 
   @override
   String get copyButtonLabel => "copyButtonLabel";
-  
+
   @override
   String get cutButtonLabel => "cutButtonLabel";
-  
+
   @override
   String get lookUpButtonLabel => "lookUpButtonLabel";
-  
+
   @override
   String get pasteButtonLabel => "pasteButtonLabel";
-  
+
   @override
   String get searchWebButtonLabel => "searchWebButtonLabel";
-  
+
   @override
   String get selectAllButtonLabel => "selectAllButtonLabel";
 

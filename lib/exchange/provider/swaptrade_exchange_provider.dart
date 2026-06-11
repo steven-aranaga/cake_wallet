@@ -116,7 +116,7 @@ class SwapTradeExchangeProvider extends ExchangeProvider {
         body: json.encode(body),
         headers: _headers,
       );
-      
+
       final responseBody = json.decode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode != 200) {
@@ -208,7 +208,7 @@ class SwapTradeExchangeProvider extends ExchangeProvider {
         body: json.encode(body),
         headers: _headers,
       );
-      
+
       final responseBody = json.decode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 400 || responseBody["success"] == false) {
@@ -235,7 +235,7 @@ class SwapTradeExchangeProvider extends ExchangeProvider {
             'url': uri.toString(),
           },
         );
-        
+
         throw TradeNotCreatedException(description, description: error);
       }
 
@@ -337,7 +337,7 @@ class SwapTradeExchangeProvider extends ExchangeProvider {
         body: json.encode(body),
         headers: _headers,
       );
-      
+
       final responseBody = json.decode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 400 || responseBody["success"] == false) {

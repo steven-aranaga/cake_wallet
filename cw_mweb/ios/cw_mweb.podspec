@@ -23,5 +23,5 @@ A new Flutter plugin project.
   s.swift_version = '5.0'
   s.vendored_frameworks = 'Mwebd.xcframework'
   s.preserve_paths = 'Mwebd.xcframework/**/*'
-  
+
 end

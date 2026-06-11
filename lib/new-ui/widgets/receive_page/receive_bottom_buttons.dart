@@ -115,7 +115,7 @@ class _ReceiveBottomButtonsState extends State<ReceiveBottomButtons> {
         final deviceInfo = DeviceInfoPlugin();
         final androidInfo = await deviceInfo.androidInfo;
         final sdk = androidInfo.version.sdkInt;
-    
+
         return sdk < 33;
     } catch (_) {
         return true;

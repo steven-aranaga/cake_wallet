@@ -124,7 +124,7 @@ class _BridgeReceiveAddressInputPageState extends State<BridgeReceiveAddressInpu
                             onPressed: () {
                               final overlayCtx = Navigator.of(context).overlay?.context;
                               bridgeViewModel.setRecipientAddress(_controller.text.trim());
-                              
+
                               WidgetsBinding.instance.addPostFrameCallback((_) {
                                 if (overlayCtx != null && overlayCtx.mounted) {
                                   showMaterialModalBottomSheet<void>(

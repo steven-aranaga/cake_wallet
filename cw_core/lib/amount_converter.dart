@@ -68,7 +68,7 @@ class AmountConverter {
 
   static Decimal cryptoAmountToDecimal({required int amount, required int divider}) =>
     (Decimal.fromInt(amount) / Decimal.fromInt(divider)).toDecimal();
-  
+
   static String _moneroAmountToStringUsingDecimals(int amount) => _moneroAmountFormat.format(
     DecimalIntl(cryptoAmountToDecimal(amount: amount, divider: _moneroAmountDivider)));
 

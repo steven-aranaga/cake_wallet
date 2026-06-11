@@ -315,7 +315,7 @@ class WowneroWalletService extends WalletService<
       String path, String password, Polyseed polyseed, WalletInfo walletInfo, PolyseedLang lang,
       {PolyseedCoin coin = PolyseedCoin.POLYSEED_WOWNERO, int? overrideHeight, String? passphrase}) async {
 
-    
+
     if (polyseed.isEncrypted == false &&
         (passphrase??'') != "") {
       // Fallback to the different passphrase offset method, when a passphrase
@@ -326,7 +326,7 @@ class WowneroWalletService extends WalletService<
         seed: polyseed.encode(lang, coin),
         seedOffset: passphrase??'',
         language: "English");
-      
+
       final wallet = WowneroWallet(
         walletInfo: walletInfo,
         derivationInfo: await walletInfo.getDerivationInfo(),

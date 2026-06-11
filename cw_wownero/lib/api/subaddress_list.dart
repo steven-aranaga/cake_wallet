@@ -79,7 +79,7 @@ List<Subaddress> getAllSubaddresses() {
   final list = List.generate(size, (index) {
     final ttDetailsLocal = ttDetails.where((element) {
       final address = getAddress(
-        accountIndex: subaddress!.accountIndex, 
+        accountIndex: subaddress!.accountIndex,
         addressIndex: index,
       );
       if (address == element.address) return true;

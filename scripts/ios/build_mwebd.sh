@@ -38,7 +38,7 @@ write_info_plist() {
         dtplatformname="iphoneos"
         dtsdkname="iphoneos17.4"
         min_os_version="12.0"
-    else 
+    else
         echo "Unknown target: $target"
         exit 1
     fi
@@ -104,24 +104,24 @@ build_go_library() {
     local cc_target="$3"
     local sdk="$4"
     local output_file="$5"
-    
+
     echo "Building Go library for ${goos}/${goarch} with target ${cc_target}..."
-    
+
     cd "$MWEB_GO_DIR"
-    
+
     export GOOS="$goos"
     export GOARCH="$goarch"
     export CGO_ENABLED=1
     export CGO_CFLAGS="-fembed-bitcode"
-    
+
     if [[ "$sdk" == "iphoneos" ]]; then
         export CC="$(xcrun -f clang) -target $cc_target -mios-version-min=12 --sysroot $(xcrun --sdk iphoneos --show-sdk-path)"
     else
         export CC="$(xcrun -f clang) -target $cc_target -mios-simulator-version-min=12 --sysroot $(xcrun --sdk iphonesimulator --show-sdk-path)"
     fi
-    
+
     go build -buildmode=c-archive -trimpath -o "$output_file" mweb.go
-    
+
     echo "Built: $output_file"
     cd - > /dev/null
 }
@@ -136,7 +136,7 @@ create_framework() {
     echo "Creating ${framework_name}.framework for target ${target} (${arch}) in ${out_dir}..."
 
     local framework_bundle="${out_dir}/${framework_name}.framework"
-    
+
     rm -rf "$framework_bundle"
     mkdir -p "$framework_bundle"
 
@@ -147,10 +147,10 @@ create_framework() {
 
     local temp_dir="${TMP_DIR}/temp_${arch}"
     mkdir -p "$temp_dir"
-    
+
     pushd "$temp_dir"
       ar x "$archive_path"
-      
+
       if [[ "$target" == "ios" ]]; then
           xcrun -sdk iphoneos clang -dynamiclib -arch "${arch}" -mios-version-min=12 \
               -install_name "@rpath/${framework_name}.framework/${framework_name}" \
@@ -163,18 +163,18 @@ create_framework() {
               -o "${framework_bundle}/${framework_name}" ./*.o
       fi
     popd
-    
+
     echo "Created binary: ${framework_bundle}/${framework_name}"
 
     write_info_plist "$framework_bundle" "$framework_name" "$target" "$arch"
-    
+
     mkdir -p "${framework_bundle}/Headers"
     local header_file="${archive_path%.a}.h"
     if [[ -f "$header_file" ]]; then
         cp "$header_file" "${framework_bundle}/Headers/${framework_name}.h"
         echo "Copied header: ${framework_bundle}/Headers/${framework_name}.h"
     fi
-    
+
     echo "Framework created: ${framework_bundle}"
 }
 

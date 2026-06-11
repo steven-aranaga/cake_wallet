@@ -1,4 +1,4 @@
-const CONTACT_TYPE_ID               = 0;    
+const CONTACT_TYPE_ID               = 0;
 const NODE_TYPE_ID                  = 1;
 const TRANSACTION_TYPE_ID           = 2;
 const TRADE_TYPE_ID                 = 3;
